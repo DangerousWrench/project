@@ -9,24 +9,13 @@
  */
 angular.module('dangerousWrenchApp', [])
   .controller('MainCtrl', function ($scope) {
+
+    $scope.searchterms = KeywordSearch.searchterms;
+    KeyWordSearch.getImages(); 
     
-  });
+});
 
 
-  
-  .service('Search', function($http) {
-    this.getPopImages = function(<<ng-click target?>>)
-      return $http({
-        method: 'GET',
-        url: 'api/????'
-      })
-      .then(function(response) {
-        //go to view page with popular images?
-      })
-        .catch(function(error) {
-          //error handler
-        })
-  });
 
 
 
