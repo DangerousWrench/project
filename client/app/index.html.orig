@@ -29,6 +29,7 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
 
+<<<<<<< HEAD:client/app/index.html
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Log In<strong class="caret"></strong></a>
             <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
@@ -53,6 +54,15 @@
         </ul>
         <h3 class="active logo text-muted"><a ng-href="#" class='glyphicon glyphicon-picture'></a></h3>
         <h3 class=" navSpacing">-</h3>
+=======
+          <li class="active"><a ng-href="#/browse">Browse</a></li>
+          <li><a ng-href="#/about">About</a></li>
+          <li><a ng-href="#">Log In</a></li>
+          <li ><a ng-href="#">Sign Up</a></li>
+        </ul>
+        <h3 class="active logo"><a ng-href="#" class='glyphicon glyphicon-picture'></a></h3>
+        <h3 class="text-muted">CatSafari</h3>
+>>>>>>> a140a1b121b3a8c29a3dd15881eb8e4f228d5408:app/index.html
       </div>
 
       <div ng-view=""></div>
@@ -100,7 +110,6 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/services/services.js"></script>
         <!-- endbuild -->
 </body>
 </html>

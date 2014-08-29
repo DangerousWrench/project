@@ -23,9 +23,20 @@ body {
   margin-top: 0;
   line-height: 40px;
   padding-bottom: 19px;
+<<<<<<< HEAD:client/app/styles/main.css
+  margin-bottom: 19px;
   margin-left:15px;
 }
 
+.navSpacing {
+  visibility:hidden;
+}
+
+=======
+  margin-left:15px;
+}
+
+>>>>>>> a140a1b121b3a8c29a3dd15881eb8e4f228d5408:app/styles/main.css
 .header .logo {
   float: left;
   margin-right:15px;
@@ -36,6 +47,7 @@ body {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+  text-align: center;
 }
 
 /* Customize container */
