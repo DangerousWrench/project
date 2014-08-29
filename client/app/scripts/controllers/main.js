@@ -7,11 +7,10 @@
  * # MainCtrl
  * Controller of the dangerousWrenchApp
  */
-angular.module('dangerousWrenchApp', [])
-  .controller('MainCtrl', function ($scope) {
-
-    $scope.searchterms = KeywordSearch.searchterms;
-    KeyWordSearch.getImages(); 
+angular.module('dangerousWrenchApp')
+  .controller('MainCtrl', function ($scope, KeywordSearch) {
+    $scope.searchterms;
+    $scope.search = KeywordSearch.search; 
     
 });
 
