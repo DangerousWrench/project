@@ -4,7 +4,7 @@
   "dependencies": {
     "express": "~4.8.5",
     "body-parser": "~1.6.5",
-    "express-session": "~1.7.6",
+    "express-session": "~1.7.6"
     },
   "devDependencies": {
     "grunt": "^0.4.1",
