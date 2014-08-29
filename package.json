@@ -1,7 +1,11 @@
 {
   "name": "dangerouswrench",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "express": "~4.8.5",
+    "body-parser": "~1.6.5",
+    "express-session": "~1.7.6",
+    },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
