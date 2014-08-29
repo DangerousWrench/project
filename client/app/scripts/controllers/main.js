@@ -8,10 +8,13 @@
  * Controller of the dangerousWrenchApp
  */
 angular.module('dangerousWrenchApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl', function ($scope, KeywordSearch) {
+    $scope.searchterms;
+    $scope.search = KeywordSearch.search; 
+    
+});
+
+
+
+
+
