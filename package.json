@@ -4,8 +4,9 @@
   "dependencies": {
     "express": "~4.8.5",
     "body-parser": "~1.6.5",
-    "express-session": "~1.7.6"
-    },
+    "express-session": "~1.7.6",
+    "neo4j": "~1.1.0"
+  },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
