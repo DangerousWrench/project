@@ -1,0 +1,16 @@
+<div class="container">
+	<!-- src may need to be adjusted based on s3 bucket formatting -->
+	<img class="artImage" src="https://dangerouswrench.s3.amazonaws.com/art{{art[0]._id}}" alt={{art[0].title}}>
+
+	<!-- display art details -->
+	<!-- this assumes that we'll have a function that queries the DB and returns art results in touples: keys and values; may have to change it based on DB formatting -->
+	<table class="artInfo">
+		<tr ng-repeat="result in results">
+			<td>{{result[0]}}</td><td>{{result[1]}}</td>
+		</tr>
+	</table>
+
+	<form class="form-inline" role="form">
+		<button ng-click="like()" class="btn btn-success">Like this piece</button>
+	</form>
+</div>
