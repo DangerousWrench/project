@@ -12,7 +12,12 @@ angular.module('dangerousWrenchApp')
     $scope.searchterms;
     $scope.search = KeywordSearch.search; 
     
-});
+})
+
+  //  .controller('SearchResultsCtrl', function ($scope) {
+  //   $scope.piece.id
+  //   $scope.select = Select.getimage(pieceid);
+  // })
 
 
 
