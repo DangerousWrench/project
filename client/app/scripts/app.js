@@ -29,11 +29,7 @@ angular
         controller: 'AboutCtrl'
       })
       .when ('/search-results', {
-<<<<<<< HEAD
         templateUrl: 'views/search-results.html',
-=======
-        templateUrl: 'search-results.html',
->>>>>>> 208c870f5dfaa703fa5019528114c13cfb228b14
         controller: 'SearchResultsCtrl'
       })
       .when('/art/:artId', {
