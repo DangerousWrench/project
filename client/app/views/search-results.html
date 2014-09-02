@@ -1,9 +1,9 @@
 <div class="container" ng-controller="SearchResultsCtrl">
   
-  <div class='images' ng-repeat="piece in data">
+  <div class='images' ng-repeat="art in data">
 
-    <div class='image' src="http://placehold.it/350x150" ng-click="select(piece.id)">
-    <!-- label for image -->
+    <div class='image' src="http://placehold.it/350x150" ng-click="select(artid)">
+    <!-- label for image {{art.id}} {{art.artist}} {{art.date}} etc.  -->
     </div>
 
   </div>  
