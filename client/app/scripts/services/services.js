@@ -27,7 +27,7 @@ angular.module('dangerousWrenchApp')
     return Search;
   })
 
-  .factory('Select', function ($http) {
+  .factory('SelectPiece', function ($http) {
     return {
       getimage: function(pieceid){
         // return $http({
