@@ -27,6 +27,10 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when ('/search-results', {
+        templateUrl: 'search-results.html',
+        controller: 'SearchResultsCtrl'
+      })
       .when('/art/:artId', {
         templateUrl: 'views/art.html',
         controller: 'ArtCtrl'
