@@ -28,7 +28,7 @@ angular
         controller: 'AboutCtrl'
       })
       .when ('/search-results', {
-        templateUrl: 'search-results.html',
+        templateUrl: 'views/search-results.html',
         controller: 'SearchResultsCtrl'
       })
       .when('/art/:artId', {
