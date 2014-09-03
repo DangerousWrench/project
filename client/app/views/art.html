@@ -1,6 +1,6 @@
 <div class="container">
 	<!-- src may need to be adjusted based on s3 bucket formatting -->
-	<img class="artImage" src="https://dangerouswrench.s3.amazonaws.com/art{{art[0]._id}}" alt={{art[0].title}}>
+	<img class="artImage" ng-src="{{results.url}}">
 
 	<!-- display art details -->
 	<!-- this assumes that we'll have a function that queries the DB and returns art results in touples: keys and values; may have to change it based on DB formatting -->
