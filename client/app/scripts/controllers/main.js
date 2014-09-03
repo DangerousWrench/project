@@ -12,7 +12,11 @@ angular.module('dangerousWrenchApp')
     $scope.searchterms;
     $scope.search = KeywordSearch.search; 
     
-});
+})
+
+  .controller('SearchResultsCtrl', function ($scope, SelectPiece) {
+    $scope.select = SelectPiece.getimage;
+})
 
 
 
