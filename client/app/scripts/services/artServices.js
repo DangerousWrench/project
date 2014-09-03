@@ -1,10 +1,10 @@
 angular.module('dangerousWrenchApp')
 	.factory('GenerateArtInfo', function($http) {
-		this.generate = function() {
+		this.generate = function(artId) {
 			return $http({
 				method: 'POST',
 				url: '', // not sure about this
-				data: {} // insert the query here; will return all nodes connected to the piece
+				data: {artId} // insert the query here; will return all nodes connected to the piece
 			})
 		};
 	});
