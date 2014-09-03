@@ -1,0 +1,51 @@
+<div class="container userPageViewContainer">
+  <div class="centerBanner">
+    <h2> CatSafari!!
+    </h2>
+    <p> Here at Le Safar du chats we like to keep our visitors happy by writing nonsense in all of our banners, cause who doesnt love footers?!1?</p> 
+    <p class="banner divider"> - --------- ---- - ---- -- -- -- - -</p>
+    <!-- Search Bar? -->
+  </div>
+
+  <!-- The left half of the user page will display the users liked photos -->
+  <div class="leftAlign">
+    <h3>
+      Your Likes
+    </h3>
+    <div class="resultsDisplay">
+      <!-- rows of liked art will be displayed here -->
+
+      <table class="userLikes">
+       <tr ng-repeat="result in results">
+         <td>{{result[0]}}</td><td>{{result[1]}}</td>
+       </tr>
+     </table>
+   </div>
+
+  </div>
+ <!-- The right half of this page will display recommended photos, etc. -->
+  <div class="rightAlign">
+  <h3>
+    Recommended Pieces
+  </h3>
+  <!-- rows of recommended art will be displayed here -->
+  <div class="resultsDisplay">
+
+
+    <table class="userRecommendations">
+     <tr ng-repeat="result in results">
+       <td>{{result[0]}}</td><td>{{result[1]}}</td>
+     </tr>
+
+     <!-- the action link below will send the ID to the server to create the user-art edge -->
+     <form class="form-inline" role="form" action="">
+       <input type="submit" value="Like this piece">
+     </form>
+   </table>
+
+
+
+  </div>
+
+  </div> 
+</div>
