@@ -75,22 +75,35 @@ module.exports = function(app){
     var params = {username: req.body.username}; 
     db.query('MATCH (n:Person ({username})-[:LIKES]->(m:Work) RETURN m', function(err, data) {
       if (err) console.log(err);
-      var likesObj = JSON.stringify(data.data);
+      var likesObj = JSON.stringify(utils.makeData(data, m));
       res.end(likesObj);
     })
   })
 
   //keyword search
   app.post('/keywordSearch', function(req, res) {
-    var searchterm = req.body.input; 
-    //start from one search term, get all work nodes with ingoing connections to it, that also have outgoing 
-    //connections to all of the other search terms
-    db.query('MATCH(n.feature =~ "(?i).*searchterm.*" or n.tag =~ "(?i).*searchterm.*") return distinct n', function(err, data) { 
-      //add 'limit ...' above to limit number returned
+    var searchterm = req.body.input;
+    var searchterms = searchterm.split(' ');
+    // var propertyKeys = [title, dates, image, name, type, artist, value]
+    var query = [];
+    query.push('MATCH (n) WHERE ')
+    for (var i = 0; i < searchterms.lenth; i++) {
+      // for (var k = 0; k < propertyKeys.length; k++)
+      query.push('(n.title =~ ".*'+ searchterms[i] +'.*" OR n.dates =~ ".*'+ searchterms[i] +'.*" OR n.image =~ ".*'+ searchterms[i] +'.*" OR n.name =~ ".*'+ searchterms[i] +'.*" OR n.type =~ ".*'+ searchterms[i] +'.*" OR n.artist =~ ".*'+ searchterms[i] +'.*" OR n.value =~ ".*'+ searchterms[i] +'.*"');
+      if (i < searchterms.length - 1) {
+        query.push(' AND ');
+      }
+    }
+    query.push(' return distinct n');
+    query = query.join('');
+    db.query(query, function(err, data) {
       if (err) console.log(err);
-
+      var searchResult = JSON.stringify(utils.makeData(data, n));
+      res.end(searchResult);
     })
   })
+  
+};
 
 
 
