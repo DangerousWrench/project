@@ -60,6 +60,4 @@ module.exports = function(app){
       })
     })
   })
-  // establish a like relationship
-  // write data array helper
 }
