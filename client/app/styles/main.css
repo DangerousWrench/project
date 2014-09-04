@@ -190,7 +190,6 @@ input {
   margin-top: -30px;
   width: 100%;
   height:100%;
-  
   background: url('http://2.bp.blogspot.com/-dlllLhl8c7s/UnrFUvtgMxI/AAAAAAAARXQ/Cv8QKBgfVD4/s1600/guernica.jpg');
   /*background-color: #a7a7a7;*/
 }
@@ -216,6 +215,17 @@ input {
   margin:auto;
   margin-bottom: 15px;
 }
+.searchBar{
+  margin:10px;
+  border:none;
+}
+.searchBarButton{
+  background-color: rgba(136, 203, 175, .2);
+  border:2px solid rgba(136, 203, 175, .9);;
+  border-radius: 4px;
+  height:25px;
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
