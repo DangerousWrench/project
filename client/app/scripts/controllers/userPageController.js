@@ -1,4 +1,4 @@
-use 'strict';
+//use 'strict';
 
 angular.module('dangerousWrenchApp')
   .controller('UserController', function ($scope, KeywordSearch, userServices) {
@@ -31,7 +31,7 @@ angular.module('dangerousWrenchApp')
     //generateUserRecommendations is the factory function that queries
     //for a specific users recommended pieces
     $scope.displayUserRecommendations = userServices.generateUserRecommendations;
-    $scope.displayUserRecommendations(); 
+    $scope.displayUserRecommendations()
       .then(function(data) {
         $scope.userRecommendationsResults = data.data;
         console.log($scope.userRecommendationsResults);
