@@ -72,6 +72,7 @@ module.exports = function(app){
   app.post('/generateUserLikes', function(req, res) {
     //may have to change names, etc., based on db format
     //'like' here = edge between usernode and artwork node
+
     var params = {username: req.body.username}; 
     db.query('MATCH (n:Person ({username})-[:LIKES]->(m:Work) RETURN m', function(err, data) {
       if (err) console.log(err);
@@ -104,8 +105,6 @@ module.exports = function(app){
   })
   
 };
-
-
 
 
 
