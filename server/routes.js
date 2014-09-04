@@ -72,8 +72,8 @@ module.exports = function(app){
   app.post('/generateUserLikes', function(req, res) {
     //may have to change names, etc., based on db format
     //'like' here = edge between usernode and artwork node
-    var username = req.body.username; 
-    db.query('MATCH (n:Person {username:"'+ username +'"})-[:LIKES]->(m:Work) RETURN m', function(err, data) {
+    var params = {username: req.body.username}; 
+    db.query('MATCH (n:Person ({username})-[:LIKES]->(m:Work) RETURN m', function(err, data) {
       if (err) console.log(err);
       var likesObj = JSON.stringify(data.data);
       res.end(likesObj);
@@ -81,11 +81,11 @@ module.exports = function(app){
   })
 
   //keyword search
-  app.post('keywordSearch', function(req, res) {
-    //not sure of the structure of the search - list of words? full phrase? booleans?
+  app.post('/keywordSearch', function(req, res) {
     var searchterm = req.body.input; 
-    //need to add here all the property values/labels it could seach on
-    db.query('MATCH(n) WHERE (n.feature =~ "(?i).*searchterm.*" or n.tag =~ "(?i).*searchterm.*") return distinct n', function(err, data) { 
+    //start from one search term, get all work nodes with ingoing connections to it, that also have outgoing 
+    //connections to all of the other search terms
+    db.query('MATCH(n.feature =~ "(?i).*searchterm.*" or n.tag =~ "(?i).*searchterm.*") return distinct n', function(err, data) { 
       //add 'limit ...' above to limit number returned
       if (err) console.log(err);
 
