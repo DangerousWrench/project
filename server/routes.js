@@ -29,6 +29,7 @@ module.exports = function(app){
     console.log(req.user);
     res.redirect('/')
   })
+<<<<<<< HEAD
 
   app.post('/generateArtInfo', function(req, res) {
     // may have to change variable names and refactor based on database formatting
@@ -66,3 +67,18 @@ module.exports = function(app){
     })
   })
 }
+=======
+}
+
+//query to return user likes
+app.post('/generateUserLikes', function(req, res) {
+  //may have to change names, etc., based on db format
+  //'like' here = edge between usernode and artwork node
+  var username - req.body.username; 
+  db.query('MATCH (n:Person {username: "username"})->[r:LIKE]-(work) RETURN work', function(err, data) {
+    if (err) console.log(err);
+    var likesObj = JSON.stringify(data.data);
+    res.end(likesObj);
+  })
+})
+>>>>>>> add user likes query on server
