@@ -5,6 +5,7 @@ var db = new neo4j.GraphDatabase(
     process.env['GRAPHENEDB_URL'] ||
     'http://localhost:7474'
 );
+var utils = require('./utils.js');
 
 module.exports = function(app){
 
