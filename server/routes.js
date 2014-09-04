@@ -37,9 +37,11 @@ module.exports = function(app){
       if (err) console.log(err);
       var id = {id: data[0].n.id};
       data = data[0].n._data.data;
+      data.id = id.id;
       db.query('MATCH (a:Work)-[r:HAS_FEATURE]->(n:Feature) WHERE id(a)=({id}) RETURN n', id, function(err, features) {
         if (err) console.log(err);
-        var dataObject = JSON.stringify({painting: data, features: features});
+        var features = utils.makeData(features);
+        var dataObject = {painting: data, features: features};
         res.end(dataObject);
       })
     })
@@ -54,7 +56,7 @@ module.exports = function(app){
       // m.name may have to be replaced with whatever we end up calling the name property/identifier of a work
       db.query('MATCH (b:Person)-[r:RATED]->(m:Work), (b)-[s:SIMILARITY]-(a:Person {username:"'+ username +'"}) WHERE NOT((a)-[:RATED]->(m)) WITH m, s.similarity AS similarity, r.rating AS rating ORDER BY m.name, similarity DESC WITH m.name AS work, COLLECT(rating)[0..3] AS ratings WITH work, REDUCE(s = 0, i IN ratings | s + i)*1.0 / LENGTH(ratings) AS reco ORDER BY reco DESC RETURN work AS Work, reco AS Recommendation', username, function(err, data) {
         if (err) console.log(err);
-        var dataObject = JSON.stringify(data.data);
+        var dataObject = utils.makeData(data);
         console.log(dataObject);
         res.end(dataObject);
       })
