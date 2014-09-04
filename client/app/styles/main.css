@@ -1,7 +1,11 @@
+/* google fonts */
+@import url(http://fonts.googleapis.com/css?family=Muli:300,400,300italic,400italic);
+
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  margin-top: 20px;
+  font-family: 'Muli', sans-serif;
+  width:95%;
 }
 
 
@@ -66,6 +70,153 @@ body {
   margin-top: 28px;
 }
 
+/* custom css for index.html and navbar */
+
+.glyphicon-picture{
+  color:#3A3B3A;
+  padding:5px;
+  border:4px inset #3A3B3A;
+}
+.glyphicon-picture:hover,
+.glyphicon-picture:focus,
+.glyphicon-picture:active{
+  color:#BEAA86;
+  border:4px inset #6f5c3b;
+  text-decoration: none;
+}
+.navSpacing{
+  visibility: hidden;
+}
+.dropdown{
+  font-family: 'Aqua', sans-serif;
+  font-size:14px;
+}
+a.dropdown-toggle {
+  color:#3A3B3A;
+  margin-left:10px;
+  margin-right:10px;
+}
+.nav > li > a{
+  padding-top: 15px;
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+  background-color: #F5F2EB;
+}
+.nav .open > a, 
+.nav .open > a:hover, 
+.nav .open > a:focus {
+  background-color: #F5F2EB;
+}
+li.dropdown:first-child{
+  border-right: 1px solid #e7e7e7; 
+}
+.dropdown-menu {
+  background-color: #3A3B3A;
+  border-radius: 2px;
+  width:240px;
+}
+.dropdown-menu {
+  outline:none;
+  padding: 15px; padding-bottom: 0px;
+  background-color: #3A3B3A;
+  border-radius: 2px;
+  width:230px;
+  transform: translate(4%, 0);
+}
+.dropdown-menu {
+ outline: none;
+  }
+.dropdown-menu-right-aligned{
+  transform: translate(-49.5%, 0);
+}
+input {
+  background-color: #F5F2EB;
+  width:250px;
+  font-size: 12px;
+  padding-top:5px;
+  padding-left:5px;
+  font-family: 'Muli', sans-serif;
+}
+.dropdown-input{
+  outline:none;
+
+  width: 100%;
+  margin-bottom: 15px;
+  size:30;
+}
+
+.entryButton {
+  width: 100%; 
+  height: 32px; 
+  color: #3A3B3A; 
+  font-size: 13px;
+  background-color: #D9CDB8;
+  border-radius: 0px;
+  border: none;
+  clear: left; 
+  padding-top:8px;
+  margin-bottom: 15px;
+  -webkit-transition: border-radius .35s ease;
+       -o-transition: border-radius .35s ease;
+          transition: border-radius .35s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #D9CDB8;
+  border: 2px solid #D9CDB8;
+  background-color: #535553;
+  border-radius:5px;
+  padding-top:6px;
+  -webkit-transition: border-radius .35s ease;
+       -o-transition: border-radius .35s ease;
+          transition: border-radius .35s ease;
+}
+
+
+/*  main.html custom css   */
+
+/*.container > .ng-scope {
+  padding:;
+  background-color: #a7a7a7;
+}*/
+
+.imgDiv{
+  padding:10px;
+  margin-top: -30px;
+  width: 100%;
+  height:100%;
+  
+  background: url('http://2.bp.blogspot.com/-dlllLhl8c7s/UnrFUvtgMxI/AAAAAAAARXQ/Cv8QKBgfVD4/s1600/guernica.jpg');
+  /*background-color: #a7a7a7;*/
+}
+.mainViewContainer {
+  width:80%;
+  margin: 150px auto;
+  padding:15px;
+  border:3px solid #535553;
+  background-color: white;
+}
+.mainViewContainer .centerbox {
+  text-align: center;
+}
+.clearfix{
+  height:2px;
+  width:60%;
+  margin:auto;
+  background-color: rgba(136, 203, 175, .2);
+  margin-top: 20px;
+}
+.centerbox > p {
+  width:500px;
+  margin:auto;
+  margin-bottom: 15px;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
@@ -84,3 +235,4 @@ body {
     border-bottom: 0;
   }
 }
+/**/
