@@ -5,7 +5,7 @@ angular.module('dangerousWrenchApp')
 		// then invoke it on the next line, so that $scope.results has data to pass along to the view
 		$scope.generate($routeParams.artId)
 			.then(function(data) {
-				$scope.results = data.data;
+				$scope.results = data.features;
 				console.log($scope.results);
 				console.log('Successfully generated info!');
 			})
