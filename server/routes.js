@@ -87,7 +87,7 @@ module.exports = function(app){
     var searchterms = searchterm.split(' ');
     // var propertyKeys = [title, dates, image, name, type, artist, value]
     var query = [];
-    query.push('MATCH (n) WHERE ')
+    query.push('MATCH (n:Work) WHERE ')
     for (var i = 0; i < searchterms.lenth; i++) {
       // for (var k = 0; k < propertyKeys.length; k++)
       query.push('(n.title =~ ".*'+ searchterms[i] +'.*" OR n.dates =~ ".*'+ searchterms[i] +'.*" OR n.image =~ ".*'+ searchterms[i] +'.*" OR n.name =~ ".*'+ searchterms[i] +'.*" OR n.type =~ ".*'+ searchterms[i] +'.*" OR n.artist =~ ".*'+ searchterms[i] +'.*" OR n.value =~ ".*'+ searchterms[i] +'.*"');
