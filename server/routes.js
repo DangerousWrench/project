@@ -5,6 +5,7 @@ var db = new neo4j.GraphDatabase(
     process.env['GRAPHENEDB_URL'] ||
     'http://localhost:7474'
 );
+var utils = require('./utils.js');
 
 module.exports = function(app){
 
@@ -59,4 +60,6 @@ module.exports = function(app){
       })
     })
   })
+  // establish a like relationship
+  // write data array helper
 }
