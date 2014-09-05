@@ -50,12 +50,11 @@ module.exports = function(app){
 
   app.post('/generateRecommendations', function(req, res) {
     // 'Person' may have to be replaced with whatever we end up labelling user nodes
-    // 'RATED' may have to be replaced with whatever label we use to signify an edge between a user node and a work
-    db.query('MATCH (p1:Person)-[x:RATED]->(m:Work)<-[y:RATED]-(p2:Person) WITH SUM(x.rating * y.rating) AS xyDotProduct, SQRT(REDUCE(xDot = 0.0, a IN COLLECT(x.rating) | xDot + a^2)) AS xLength, SQRT(REDUCE(yDot = 0.0, b IN COLLECT(y.rating) | yDot + b^2)) AS yLength, p1, p2 MERGE (p1)-[s:SIMILARITY]-(p2) SET s.similarity = xyDotProduct / (xLength * yLength)', function(err, data) {
+    db.query('MATCH (p1:Person)-[x:LIKES]->(m:Work)<-[y:LIKES]-(p2:Person) WITH SUM(x.rating * y.rating) AS xyDotProduct, SQRT(REDUCE(xDot = 0.0, a IN COLLECT(x.rating) | xDot + a^2)) AS xLength, SQRT(REDUCE(yDot = 0.0, b IN COLLECT(y.rating) | yDot + b^2)) AS yLength, p1, p2 MERGE (p1)-[s:SIMILARITY]-(p2) SET s.similarity = xyDotProduct / (xLength * yLength)', function(err, data) {
       if (err) console.log(err);
       var username = req.body.username;
       // m.name may have to be replaced with whatever we end up calling the name property/identifier of a work
-      db.query('MATCH (b:Person)-[r:RATED]->(m:Work), (b)-[s:SIMILARITY]-(a:Person {username:"'+ username +'"}) WHERE NOT((a)-[:RATED]->(m)) WITH m, s.similarity AS similarity, r.rating AS rating ORDER BY m.name, similarity DESC WITH m.name AS work, COLLECT(rating)[0..3] AS ratings WITH work, REDUCE(s = 0, i IN ratings | s + i)*1.0 / LENGTH(ratings) AS reco ORDER BY reco DESC RETURN work AS Work, reco AS Recommendation', username, function(err, data) {
+      db.query('MATCH (b:Person)-[r:LIKES]->(m:Work), (b)-[s:SIMILARITY]-(a:Person {username:"'+ username +'"}) WHERE NOT((a)-[:LIKES]->(m)) WITH m, s.similarity AS similarity, r.rating AS rating ORDER BY m.name, similarity DESC WITH m.name AS work, COLLECT(rating)[0..3] AS ratings WITH work, REDUCE(s = 0, i IN ratings | s + i)*1.0 / LENGTH(ratings) AS reco ORDER BY reco DESC RETURN work AS Work, reco AS Recommendation', username, function(err, data) {
         if (err) console.log(err);
         // these may have to be replaced with the lower-case references
         var works = utils.makeData(data, 'Work');
@@ -106,7 +105,7 @@ module.exports = function(app){
 
   app.get('/like/:id', function(req, res){
     var params = { id: req.params.id, user: req.session.user.id };
-    db.query('MATCH (n:User),(b:Work)\nWHERE id(n)=({user}) AND id(b)=({id})\nCREATE (n)-[:LIKES]->(b)', params, function(err){
+    db.query('MATCH (n:User),(b:Work)\nWHERE id(n)=({user}) AND id(b)=({id})\nCREATE (n)-[:LIKES {rating:1}]->(b)', params, function(err){
       res.end();
     })
   })
