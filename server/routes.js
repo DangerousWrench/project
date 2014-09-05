@@ -76,7 +76,7 @@ module.exports = function(app){
     var params = {username: req.body.username}; 
     db.query('MATCH (n:Person ({username})-[:LIKES]->(m:Work) RETURN m limit 1000', function(err, data) {
       if (err) console.log(err);
-      var likesObj = JSON.stringify(utils.makeData(data, m));
+      var likesObj = JSON.stringify(utils.makeData(data, 'm'));
       res.end(likesObj);
     })
   })
@@ -99,8 +99,15 @@ module.exports = function(app){
     query = query.join('');
     db.query(query, function(err, data) {
       if (err) console.log(err);
-      var searchResult = JSON.stringify(utils.makeData(data, n));
+      var searchResult = JSON.stringify(utils.makeData(data, 'n'));
       res.end(searchResult);
+    })
+  })
+
+  app.get('/like/:id', function(req, res){
+    var params = { id: req.params.id, user: req.session.user.id };
+    db.query('MATCH (n:User),(b:Work)\nWHERE id(n)=({user}) AND id(b)=({id})\nCREATE (n)-[:LIKES]->(b)', params, function(err){
+      res.end();
     })
   })
   
