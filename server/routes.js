@@ -87,10 +87,10 @@ module.exports = function(app){
     var searchterms = searchterm.split(' ');
     // var propertyKeys = [title, dates, image, name, type, artist, value]
     var query = [];
-    query.push('MATCH (n:Work) WHERE ')
+    query.push('MATCH (n:Work)-[:HAS_FEATURE]-(a:Feature) WHERE ')
     for (var i = 0; i < searchterms.lenth; i++) {
       // for (var k = 0; k < propertyKeys.length; k++)
-      query.push('(n.title =~ ".*'+ searchterms[i] +'.*" OR n.dates =~ ".*'+ searchterms[i] +'.*" OR n.image =~ ".*'+ searchterms[i] +'.*" OR n.name =~ ".*'+ searchterms[i] +'.*" OR n.type =~ ".*'+ searchterms[i] +'.*" OR n.artist =~ ".*'+ searchterms[i] +'.*" OR n.value =~ ".*'+ searchterms[i] +'.*"');
+      query.push('(n.title =~ ".*'+ searchterms[i] +'.*" OR n.image =~ ".*'+ searchterms[i] +'.*" OR n.artist =~ ".*'+ searchterms[i] +'.*" OR (a.type = "TIMELINE" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "TYPE" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "FORM" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "SCHOOL" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "TECHNIQUE" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "DATE" AND a.value =~ ".*'+ searchterms[i] +'.*"))');  
       if (i < searchterms.length - 1) {
         query.push(' AND ');
       }
@@ -100,6 +100,7 @@ module.exports = function(app){
     db.query(query, function(err, data) {
       if (err) console.log(err);
       var searchResult = JSON.stringify(utils.makeData(data, 'n'));
+      console.log(searchterms)
       res.end(searchResult);
     })
   })
