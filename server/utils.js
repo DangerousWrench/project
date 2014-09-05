@@ -1,4 +1,4 @@
-var makeData = function(data, key){
+exports.makeData = function(data, key){
   if(!data || !(data.length)){
     return false;
   } else {
