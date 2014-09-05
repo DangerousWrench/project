@@ -3,9 +3,10 @@
 
 /* Space out content a bit */
 body {
-  margin-top: 20px;
+  margin-top: 15px;
   font-family: 'Muli', sans-serif;
   width:95%;
+  overflow-x: hidden;
 }
 
 
@@ -24,9 +25,9 @@ body {
 
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-  margin-top: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+  margin-top: -10px;
+  line-height: 30px;
+  padding-bottom: 10px;
   margin-left:15px;
 }
 
@@ -45,11 +46,12 @@ body {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
+    width: 110%;
+    transform: translate(-2.5%, 0);
   }
 }
 .container-narrow > hr {
-  margin: 30px 0;
+  margin: 10px 0;
 }
 
 /* Main marketing message and sign up button */
@@ -73,9 +75,12 @@ body {
 /* custom css for index.html and navbar */
 
 .glyphicon-picture{
+  position:fixed;
   color:#3A3B3A;
   padding:5px;
   border:4px inset #3A3B3A;
+  left:3%;
+  top:-8px;
 }
 .glyphicon-picture:hover,
 .glyphicon-picture:focus,
@@ -194,7 +199,7 @@ input {
   /*background-color: #a7a7a7;*/
 }
 .mainViewContainer {
-  width:80%;
+  width:40%;
   margin: 150px auto;
   padding:15px;
   border:3px solid #535553;
@@ -211,19 +216,49 @@ input {
   margin-top: 20px;
 }
 .centerbox > p {
-  width:500px;
+  width:85%;
   margin:auto;
   margin-bottom: 15px;
 }
 .searchBar{
   margin:10px;
   border:none;
+  border:1px solid #F5F2EB;
+  background-color: white;
+  color:rgba(136, 203, 175, .9);
 }
 .searchBarButton{
   background-color: rgba(136, 203, 175, .2);
-  border:2px solid rgba(136, 203, 175, .9);;
+  border:2px solid rgba(136, 203, 175, .9);
   border-radius: 4px;
   height:25px;
+}
+.searchBarInput:active,
+.searchBarInput:hover,
+.searchBarInput:focus{
+  border:1px solid #dcd1b8;
+}
+.searchBar:active,
+.searchBar:hover,
+.searchBar:focus{
+  outline:none;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #ede7da;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #ede7da;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #ede7da;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #ede7da;
+}
+.footer{
+  text-align:center;
 }
 
 
