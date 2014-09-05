@@ -4,7 +4,7 @@ angular.module('dangerousWrenchApp')
 		this.generate = function(artId) {
 			return $http({
 				method: 'POST',
-				url: RESTUrl + '/generateArtInfo', // not sure about this
+				url: RESTUrl + '/generateArtInfo',
 				data: {painting: artId}
 			})
 		};

@@ -5,6 +5,7 @@ var db = new neo4j.GraphDatabase(
     process.env['GRAPHENEDB_URL'] ||
     'http://localhost:7474'
 );
+var utils = require('./utils.js');
 
 module.exports = function(app){
 
@@ -29,6 +30,7 @@ module.exports = function(app){
     res.redirect('/')
   })
 
+
   app.post('/generateArtInfo', function(req, res) {
     // may have to change variable names and refactor based on database formatting
     var pid = parseInt(req.body.painting);
@@ -36,8 +38,10 @@ module.exports = function(app){
       if (err) console.log(err);
       var id = {id: data[0].n.id};
       data = data[0].n._data.data;
+      data.id = id.id;
       db.query('MATCH (a:Work)-[r:HAS_FEATURE]->(n:Feature) WHERE id(a)=({id}) RETURN n', id, function(err, features) {
         if (err) console.log(err);
+        var features = utils.makeData(features, 'n');
         var dataObject = JSON.stringify({painting: data, features: features});
         res.end(dataObject);
       })
@@ -53,10 +57,63 @@ module.exports = function(app){
       // m.name may have to be replaced with whatever we end up calling the name property/identifier of a work
       db.query('MATCH (b:Person)-[r:RATED]->(m:Work), (b)-[s:SIMILARITY]-(a:Person {username:"'+ username +'"}) WHERE NOT((a)-[:RATED]->(m)) WITH m, s.similarity AS similarity, r.rating AS rating ORDER BY m.name, similarity DESC WITH m.name AS work, COLLECT(rating)[0..3] AS ratings WITH work, REDUCE(s = 0, i IN ratings | s + i)*1.0 / LENGTH(ratings) AS reco ORDER BY reco DESC RETURN work AS Work, reco AS Recommendation', username, function(err, data) {
         if (err) console.log(err);
-        var dataObject = JSON.stringify(data.data);
+        // these may have to be replaced with the lower-case references
+        var works = utils.makeData(data, 'Work');
+        var recommendations = utils.makeData(data, 'Recommendation');
+        var dataObject = JSON.stringify({works: works, recommendations: recommendations});
         console.log(dataObject);
         res.end(dataObject);
       })
     })
   })
-}
+
+
+  //query to return user likes
+  app.post('/generateUserLikes', function(req, res) {
+    //may have to change names, etc., based on db format
+    //'like' here = edge between usernode and artwork node
+
+    var params = {username: req.body.username}; 
+    db.query('MATCH (n:Person {username: ({username})}-[:LIKES]->(m:Work) RETURN m limit 1000', params, function(err, data) {
+      if (err) console.log(err);
+      var likesObj = JSON.stringify(utils.makeData(data, 'm'));
+      res.end(likesObj);
+    })
+  })
+
+  //keyword search
+  app.post('/keywordSearch', function(req, res) {
+    var searchterm = req.body.input;
+    var searchterms = searchterm.split(' ');
+    // var propertyKeys = [title, dates, image, name, type, artist, value]
+    var query = [];
+    query.push('MATCH (n:Work) WHERE ')
+    for (var i = 0; i < searchterms.lenth; i++) {
+      // for (var k = 0; k < propertyKeys.length; k++)
+      query.push('(n.title =~ ".*'+ searchterms[i] +'.*" OR n.dates =~ ".*'+ searchterms[i] +'.*" OR n.image =~ ".*'+ searchterms[i] +'.*" OR n.name =~ ".*'+ searchterms[i] +'.*" OR n.type =~ ".*'+ searchterms[i] +'.*" OR n.artist =~ ".*'+ searchterms[i] +'.*" OR n.value =~ ".*'+ searchterms[i] +'.*"');
+      if (i < searchterms.length - 1) {
+        query.push(' AND ');
+      }
+    }
+    query.push(' return distinct n limit 1000');
+    query = query.join('');
+    db.query(query, function(err, data) {
+      if (err) console.log(err);
+      var searchResult = JSON.stringify(utils.makeData(data, 'n'));
+      res.end(searchResult);
+    })
+  })
+
+  app.get('/like/:id', function(req, res){
+    var params = { id: req.params.id, user: req.session.user.id };
+    db.query('MATCH (n:User),(b:Work)\nWHERE id(n)=({user}) AND id(b)=({id})\nCREATE (n)-[:LIKES]->(b)', params, function(err){
+      res.end();
+    })
+  })
+  
+};
+
+
+
+
+
