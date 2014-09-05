@@ -14,7 +14,9 @@ angular.module('dangerousWrenchApp')
     
 })
 
-  .controller('SearchResultsCtrl', function ($scope, SelectPiece) {
+  .controller('SearchResultsCtrl', function ($scope, SelectPiece, KeywordSearch) {
+    $scope.searchterms;
+    $scope.search = KeywordSearch.search; 
     $scope.select = SelectPiece.getimage;
 })
 
