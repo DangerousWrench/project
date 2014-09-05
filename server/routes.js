@@ -90,7 +90,6 @@ module.exports = function(app){
     query.push('MATCH (n:Work)-[:HAS_FEATURE]-(a:Feature) WHERE ');
     console.log('SEARCHTERMS=', searchterms);
     for (var i = 0; i < searchterms.length; i++) {
-      console.log('IN FOOOOOOOOR LOOP')
       console.log('searchterm', searchterms[i])
       // for (var k = 0; k < propertyKeys.length; k++)
       query.push('(n.title =~ ".*'+ searchterms[i] +'.*" OR n.image =~ ".*'+ searchterms[i] +'.*" OR n.artist =~ ".*'+ searchterms[i] +'.*" OR (a.type = "TIMELINE" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "TYPE" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "FORM" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "SCHOOL" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "TECHNIQUE" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "DATE" AND a.value =~ ".*'+ searchterms[i] +'.*"))');  
@@ -98,7 +97,7 @@ module.exports = function(app){
         query.push(' AND ');
       }
     }
-    query.push(' return n limit 1000');
+    query.push(' return distinct n limit 1000');
     query = query.join('');
     console.log(query)
     db.query(query, function(err, data) {
