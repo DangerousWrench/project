@@ -5,7 +5,6 @@ angular.module('dangerousWrenchApp')
   .factory('KeywordSearch', function ($http, $location) {
     var displayResults = function() {
         $location.path('/search-results');
-        console.log('display results');
     };
     var Search = {
       search: function(searchterms) {
@@ -17,12 +16,10 @@ angular.module('dangerousWrenchApp')
         })
         .then(function (response) {
           response = response.data;
+          displayResults(); 
           console.log(response);
         }).catch(function(err) {
-          console.log('error in getting search results')
-        console.log(searchterms)
-        displayResults(); 
-        
+          console.log('error in getting search results');        
       })
     }
   }
