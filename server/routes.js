@@ -2,7 +2,8 @@
 var neo4j = require('neo4j');
 var passport = require('./passport-config.js')
 var db = new neo4j.GraphDatabase(
-    process.env['GRAPHENE_DB'] || 'http://localhost:7474'
+  'http://app29028125:ZcUY4iYVR6P8MKPj1Z5c@app29028125.sb02.stations.graphenedb.com:24789'
+    // process.env['GRAPHENE_DB'] || 'http://localhost:7474'
 );
 var utils = require('./utils.js');
 
@@ -86,16 +87,20 @@ module.exports = function(app){
     var searchterms = searchterms.split(' ');
     // var propertyKeys = [title, dates, image, name, type, artist, value]
     var query = [];
-    query.push('MATCH (n:Work)-[:HAS_FEATURE]-(a:Feature) WHERE ')
-    for (var i = 0; i < searchterms.lenth; i++) {
+    query.push('MATCH (n:Work)-[:HAS_FEATURE]-(a:Feature) WHERE ');
+    console.log('SEARCHTERMS=', searchterms);
+    for (var i = 0; i < searchterms.length; i++) {
+      console.log('IN FOOOOOOOOR LOOP')
+      console.log('searchterm', searchterms[i])
       // for (var k = 0; k < propertyKeys.length; k++)
       query.push('(n.title =~ ".*'+ searchterms[i] +'.*" OR n.image =~ ".*'+ searchterms[i] +'.*" OR n.artist =~ ".*'+ searchterms[i] +'.*" OR (a.type = "TIMELINE" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "TYPE" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "FORM" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "SCHOOL" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "TECHNIQUE" AND a.value =~ ".*'+ searchterms[i] +'.*") OR (a.type = "DATE" AND a.value =~ ".*'+ searchterms[i] +'.*"))');  
       if (i < searchterms.length - 1) {
         query.push(' AND ');
       }
     }
-    query.push(' return distinct n limit 1000');
+    query.push(' return n limit 1000');
     query = query.join('');
+    console.log(query)
     db.query(query, function(err, data) {
       if (err) console.log(err);
       var searchResult = JSON.stringify(utils.makeData(data, 'n'));
