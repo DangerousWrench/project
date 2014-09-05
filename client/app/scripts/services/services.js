@@ -9,21 +9,23 @@ angular.module('dangerousWrenchApp')
     };
     var Search = {
       search: function(searchterms) {
-        // return $http({
-        //   method: 'GET',
-        //   url: '',
-        //   data: searchterms
-        // })
-        // .then(function (response) {
-        //   data = response.data;
-        //   displayResults(response)
-        // }).catch(function(err) {
-       //    console.log('error in getting search results')
+        searchterms = JSON.stringify({searchterms: searchterms});
+        return $http({
+          method: 'POST',
+          url: '/KeywordSearch',
+          data: searchterms
+        })
+        .then(function (response) {
+          response = response.data;
+          console.log(response);
+        }).catch(function(err) {
+          console.log('error in getting search results')
         console.log(searchterms)
         displayResults(); 
         
-      }
-      };
+      })
+    }
+  }
     return Search;
   })
 

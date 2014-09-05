@@ -2,8 +2,7 @@
 var neo4j = require('neo4j');
 var passport = require('./passport-config.js')
 var db = new neo4j.GraphDatabase(
-    process.env['GRAPHENEDB_URL'] ||
-    'http://localhost:7474'
+    process.env['GRAPHENE_DB'] || 'http://localhost:7474'
 );
 var utils = require('./utils.js');
 
@@ -30,8 +29,8 @@ module.exports = function(app){
     res.redirect('/')
   })
 
-
-  app.post('/generateArtInfo', function(req, res) {
+  //needs s3
+  app.post('/generateArtInfo', function(req, res) { 
     // may have to change variable names and refactor based on database formatting
     var pid = parseInt(req.body.painting);
     db.query('MATCH (n:Work) WHERE id(n)='+ pid +' RETURN n', function(err, data) {
@@ -48,6 +47,7 @@ module.exports = function(app){
     })
   })
 
+  //needs s3
   app.post('/generateRecommendations', function(req, res) {
     // 'Person' may have to be replaced with whatever we end up labelling user nodes
     // 'RATED' may have to be replaced with whatever label we use to signify an edge between a user node and a work
@@ -68,7 +68,7 @@ module.exports = function(app){
   })
 
 
-  //query to return user likes
+  //needs s3
   app.post('/generateUserLikes', function(req, res) {
     //may have to change names, etc., based on db format
     //'like' here = edge between usernode and artwork node
@@ -81,14 +81,14 @@ module.exports = function(app){
     })
   })
 
-  //keyword search
-  app.post('/keywordSearch', function(req, res) {
-    var searchterm = req.body.input;
-    var searchterms = searchterm.split(' ');
+  //keyword search needs s3
+  app.post('/KeywordSearch', function(req, res) {
+    var searchterms = req.body.searchterms;
+    var searchterms = searchterms.split(' ');
     // var propertyKeys = [title, dates, image, name, type, artist, value]
     var query = [];
     query.push('MATCH (n:Work) WHERE ')
-    for (var i = 0; i < searchterms.lenth; i++) {
+    for (var i = 0; i < searchterms.length; i++) {
       // for (var k = 0; k < propertyKeys.length; k++)
       query.push('(n.title =~ ".*'+ searchterms[i] +'.*" OR n.dates =~ ".*'+ searchterms[i] +'.*" OR n.image =~ ".*'+ searchterms[i] +'.*" OR n.name =~ ".*'+ searchterms[i] +'.*" OR n.type =~ ".*'+ searchterms[i] +'.*" OR n.artist =~ ".*'+ searchterms[i] +'.*" OR n.value =~ ".*'+ searchterms[i] +'.*"');
       if (i < searchterms.length - 1) {
