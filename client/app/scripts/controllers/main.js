@@ -11,6 +11,19 @@ angular.module('dangerousWrenchApp')
   .controller('MainCtrl', function ($scope, KeywordSearch) {
     $scope.searchterms;
     $scope.search = KeywordSearch.search; 
+    $scope.displayResults = KeywordSearch.displayResults;
+
+    $scope.search = function() {
+      $scope.search.results = KeywordSearch.search($scope.searchterms)
+        .then(function (response) {
+          $scope.artData = response.data;
+          $scope.displayResults(response);
+          // console.log("scope.artdata = ", $scope.artData);
+        }, function (error) {
+          console.log(error);
+        })
+    };
+
     
 })
 
@@ -21,7 +34,8 @@ angular.module('dangerousWrenchApp')
       $scope.search.results = KeywordSearch.search($scope.searchterms)
         .then(function (response) {
           $scope.artData = response.data;
-          console.log("scope.artdata = ", $scope.artData[0]);
+          // $scope.displayResults(response);
+          // console.log("scope.artdata = ", $scope.artData);
         }, function (error) {
           console.log(error);
         })
