@@ -36,15 +36,16 @@
 
 
   <div class='images' ng-repeat='art in artData'>
-
+    <a href = "/#/art/{{art.id}}">
     <div class='image' src='http://placehold.it/350x150' ng-click='artid = {{art.id}}; select(artid)'>
       <table class="artInfo">
         <tr>{{art.title}}
-      <td>Artist: {{art.artist}}</td>
+          <td>Artist: {{art.artist}}</td>
         </tr>
       </table>
     <!-- label for image {{art.id}} {{art.artist}} {{art.date}} etc.  -->
     </div>
+    </a>
 
   </div>  
 </div>

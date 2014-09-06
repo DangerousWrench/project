@@ -53,23 +53,22 @@ angular.module('dangerousWrenchApp')
   //   return Search;
   })
 
-  .factory('SelectPiece', function ($http) {
-    return {
-      getimage: function(artid){
-        return $http({
-          method: 'POST',
-          url: '/generateArtInfo',
-          data: artid
-        }).then(function(response) {
-          $location.path(__dirname + '/' + artid);
-        }).catch(function(err) {
-          console.log(artid);
-          console.log('error accessing image')
-        })
-        console.log('getting image');
-        if (artid) {
-          console.log(artid);
-        }
-      }
-    };
-  })
+  // .factory('SelectPiece', function ($http) {
+  //   return {
+  //     getimage: function(artid){
+  //       return $http({
+  //         method: 'POST',
+  //         url: '/generateArtInfo',
+  //         data: artid
+  //       }).then(function(response) {
+  //         $location.path(__dirname + '/' + artid);
+  //       }).catch(function(err) {
+  //         console.log(artid);
+  //         console.log('error accessing image')
+  //       })
+  //       console.log('getting image');
+  //       if (artid) {
+  //         console.log(artid);
+  //       }
+  //     }
+  //   };
