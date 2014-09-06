@@ -3,17 +3,11 @@
 angular.module('dangerousWrenchApp')
 
   .factory('KeywordSearch', function ($http, $location, $q, $rootScope, $timeout) {
-    // var displayResults = function(data) {
-    //   // console.log('response in displayReults,', displayData)
-    //   // console.log(Search.result)
-    //   $location.path('/search-results');
-    // }
+    
     return {
       displayResults: function(data) {
-      // console.log('response in displayReults,', displayData)
-      // console.log(Search.result)
       $location.path('/search-results');
-      $timeout(function(){$rootScope.$broadcast('redirected', {data: data});}, [200]);
+      $timeout(function(){$rootScope.$broadcast('redirected', {data: data});}, [100]);
       },
 
       search: function(searchterms) {
