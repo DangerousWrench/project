@@ -14,20 +14,21 @@ angular.module('dangerousWrenchApp')
     $scope.displayResults = KeywordSearch.displayResults;
 
     $scope.search = function() {
-      $scope.search.results = KeywordSearch.search($scope.searchterms)
-        .then(function (response) {
-          $scope.artData = response.data;
-          $scope.displayResults(response);
-          // console.log("scope.artdata = ", $scope.artData);
-        }, function (error) {
-          console.log(error);
-        })
+      $scope.displayResults($scope.searchterms);
+    //   $scope.search.results = KeywordSearch.search($scope.searchterms)
+    //     .then(function (response) {
+    //       $scope.artData = response.data;
+    //       $scope.displayResults(response);
+    //       console.log("scope.artdata main= ", $scope.artData);
+    //     }, function (error) {
+    //       console.log(error);
+    //     })
     };
 
     
 })
 
-  .controller('SearchResultsCtrl', function ($scope, SelectPiece, KeywordSearch) {
+  .controller('SearchResultsCtrl', function ($scope, $rootScope, SelectPiece, KeywordSearch) {
     $scope.searchterms;
     $scope.artData = {};
     $scope.search = function() {
@@ -35,12 +36,16 @@ angular.module('dangerousWrenchApp')
         .then(function (response) {
           $scope.artData = response.data;
           // $scope.displayResults(response);
-          // console.log("scope.artdata = ", $scope.artData);
+          console.log("scope.artdata searchresults = ", $scope.artData);
         }, function (error) {
           console.log(error);
         })
     };
-
+    $rootScope.$on('redirected', function (event, data) {
+      console.log('in scope.on', data.data)
+      $scope.searchterms = data.data;
+      $scope.search();
+    });
     $scope.select = SelectPiece.getimage;
 })
 

@@ -2,7 +2,7 @@
 
 angular.module('dangerousWrenchApp')
 
-  .factory('KeywordSearch', function ($http, $location, $q) {
+  .factory('KeywordSearch', function ($http, $location, $q, $rootScope, $timeout) {
     // var displayResults = function(data) {
     //   // console.log('response in displayReults,', displayData)
     //   // console.log(Search.result)
@@ -12,11 +12,13 @@ angular.module('dangerousWrenchApp')
       displayResults: function(data) {
       // console.log('response in displayReults,', displayData)
       // console.log(Search.result)
-      $location.path('/search-results')
+      $location.path('/search-results');
+      $timeout(function(){$rootScope.$broadcast('redirected', {data: data});}, [200]);
       },
 
       search: function(searchterms) {
-        searchterms = JSON.stringify({searchterms: searchterms});
+        var searchterms = JSON.stringify({searchterms: searchterms});
+        console.log(searchterms)
         var deferred = $q.defer();
         var httpPromise = $http({
           method: 'POST',
