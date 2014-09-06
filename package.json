@@ -5,7 +5,8 @@
     "express": "~4.8.5",
     "body-parser": "~1.6.5",
     "express-session": "~1.7.6",
-    "neo4j": "~1.1.0"
+    "neo4j": "~1.1.0",
+    "aws-sdk": "~2.0.15"
   },
   "devDependencies": {
     "grunt": "^0.4.1",
