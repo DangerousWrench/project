@@ -76,7 +76,9 @@ module.exports = function(app){
     var params = {username: req.body.username}; 
     db.query('MATCH (n:Person {username: ({username})}-[:LIKES]->(m:Work) RETURN m limit 1000', params, function(err, data) {
       if (err) console.log(err);
-      var likesObj = JSON.stringify(utils.makeData(data, 'm'));
+      var likesObj = utils.makeData(data, 'm');
+      likesObj = utils.appendUrl(likesObj);
+      likesObj = JSON.stringify(likesObj);
       res.end(likesObj);
     })
   })
