@@ -32,6 +32,7 @@ angular
         templateUrl: 'views/search-results.html',
         controller: 'SearchResultsCtrl'
       })
+      .when('/art/:artId', {
         templateUrl: 'views/art.html',
         controller: 'ArtCtrl'
       })
