@@ -102,7 +102,7 @@ body {
   color:#3A3B3A;
   padding:5px;
   border:4px inset #3A3B3A;
-  left:5px;
+  left:15px;
   top:-2.5px;
   
 }
@@ -369,7 +369,6 @@ button.dropdown-toggle {
 }
 .fakeData {
   position:relative;
-  display:block;
   width:100%;
   height:100%;
 }
@@ -383,6 +382,55 @@ button.dropdown-toggle {
 }
 .footer{
   text-align:center;
+}
+
+/*   ArtView styling   */
+
+.fakeImage{
+  width:400px;
+  height:400px;
+  margin:auto;
+  border:2px solid black;
+}
+
+form.likeButtonForm {
+  width:400px;
+  text-align: center;
+  margin:auto;
+  padding: 25px;
+  padding-left: 0;
+  margin-bottom: 20px;
+  height:50px;
+}
+
+form.likeButtonForm > input[type=text] {
+  margin-right: 10px;
+  margin-top:18px;
+  height:40px;
+  font-size: 12px;
+  padding: 5px;
+}
+
+form.likeButtonForm > input[type=submit] {
+  background-color: rgba(136, 233, 175, 1);
+  outline: none;
+  border:0;
+  border-radius: 2px;
+  box-shadow: 0px 4px 0px rgba(9, 178, 109, 1);
+  height:40px;
+  color:white;
+}
+
+form.likeButtonForm > input[type=submit]:active {
+  outline: none;
+  box-shadow: 0px 2px 0px rgba(9, 178, 109, 1);
+  transform: translate(0, 2px);
+  /*border:0;
+  border-bottom:3px solid #0DFF9C;*/
+
+}
+.likeButton {
+  width:150px;
 }
 
 
