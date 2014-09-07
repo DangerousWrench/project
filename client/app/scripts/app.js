@@ -32,8 +32,6 @@ angular
         templateUrl: 'views/search-results.html',
         controller: 'SearchResultsCtrl'
       })
-      // .when('/art/:artId', {
-      .when('/art', {
         templateUrl: 'views/art.html',
         controller: 'ArtCtrl'
       })
