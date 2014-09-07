@@ -19,6 +19,7 @@ body {
 
 
 
+
 /*----------------------------*/
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -151,12 +152,15 @@ li.dropdown:first-child{
   background-color: #3A3B3A;
   border-radius: 2px;
   width:230px;
+}
+.dropdown .dropdown-menu {
   transform: translate(4%, 0);
 }
 .dropdown-menu {
  outline: none;
   }
-.dropdown-menu-right-aligned{
+
+.dropdown .dropdown-menu-right-aligned{
   transform: translate(-49.5%, 0);
 }
 input {
@@ -323,6 +327,7 @@ button.dropdown-toggle {
   margin-right:0px;
   background-color: rgba(237, 231, 218, .3);
   border: 4px solid rgba(237, 231, 218, 1);
+  
 }
 .btn-group > .btn:last-child:not(:first-child), 
 .btn-group > .dropdown-toggle:not(:first-child) {
@@ -352,6 +357,7 @@ button.dropdown-toggle {
   background-color: rgba(237, 231, 218, .5);
   box-shadow: 0 0 20px rgba(237, 231, 218, 1);
 }
+
 .dropdown-menu > li > a {
   color:black;
   padding: 0 10px;
