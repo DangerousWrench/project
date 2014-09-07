@@ -1,15 +1,16 @@
-/* google fonts */
+ google fonts */
 @import url(http://fonts.googleapis.com/css?family=Muli:300,400,300italic,400italic);
 
 /* Space out content a bit */
 body {
-  margin-top: 15px;
+  margin-top: 0;
   font-family: 'Muli', sans-serif;
   width:95%;
   overflow-x: hidden;
 }
 
 
+/*----------------------------*/
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -25,16 +26,21 @@ body {
 
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-  margin-top: -10px;
   line-height: 30px;
   padding-bottom: 10px;
-  margin-left:15px;
+  margin-left:5px;
+  margin-top:5px; 
 }
 
 .header .logo {
-  float: left;
-  margin-right:15px;
+  float:left;
+  margin:0;
+  margin-top: 5px;
+  left:5px;
+  top:-2.5px;
 }
+
+/*----------------------------*/
 
 /* Custom page footer */
 .footer {
@@ -45,9 +51,16 @@ body {
 
 /* Customize container */
 @media (min-width: 768px) {
-  .container {
+  .mainContainer {
     width: 110%;
+    color:black;
+    border:20px solid blue;
+    background-color: red;
+    height:5000px;
     transform: translate(-2.5%, 0);
+  }
+  .container {
+    width:80%;
   }
 }
 .container-narrow > hr {
@@ -75,12 +88,12 @@ body {
 /* custom css for index.html and navbar */
 
 .glyphicon-picture{
-  position:fixed;
   color:#3A3B3A;
   padding:5px;
   border:4px inset #3A3B3A;
-  left:3%;
-  top:-8px;
+  left:5px;
+  top:-2.5px;
+  
 }
 .glyphicon-picture:hover,
 .glyphicon-picture:focus,
@@ -257,6 +270,13 @@ input {
 :-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #ede7da;
 }
+
+/*Search Results Styling*/
+
+.SearchResultsHeader{
+  margin:auto;
+}
+
 .footer{
   text-align:center;
 }
