@@ -6,8 +6,7 @@ angular.module('dangerousWrenchApp')
     
     return {
       displayResults: function(data) {
-      $location.path('/search-results');
-      $timeout(function(){$rootScope.$broadcast('redirected', {data: data});}, [100]);
+        $location.path('/search-results').search('q', data);
       },
 
       search: function(searchterms) {

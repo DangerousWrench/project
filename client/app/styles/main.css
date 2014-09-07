@@ -46,7 +46,7 @@ body {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    width: 110%;
+    /*width: 100%;*/
     transform: translate(-2.5%, 0);
   }
 }

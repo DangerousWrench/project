@@ -5,7 +5,7 @@
 
 	<form>
       <input type="text" ng-model="searchterms" placeholder="Enter search terms...">
-      <button ng-click="search(searchterms)">Search!</button>
+      <button ng-click="search()">Search!</button>
     </form>
 
     <div class='btn-group'>
@@ -37,7 +37,7 @@
 
   <div class='images' ng-repeat='art in artData'>
     <a href = "/#/art/{{art.id}}">
-    <div class='image' src='http://placehold.it/350x150' ng-click='artid = {{art.id}}; select(artid)'>
+    <div class='image' src='http://placehold.it/350x150'>
       <table class="artInfo">
         <tr>{{art.title}}
           <td>Artist: {{art.artist}}</td>
