@@ -1,48 +1,73 @@
 
 <div class='SearchResultsContainer'>
-  
-<div class='SearchResultsHeader'>
 
-	<form>
-      <input type="text" ng-model="searchterms" placeholder="Enter search terms...">
-      <button class="searchBar searchBarButton" ng-click="search(searchterms)" >Search!</button>
-    </form>
+  <div class='SearchResultsHeader'>
 
-    <div class='btn-group'>
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Medium<span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <li><a href="#">Painting - oil</a></li>
-        <li><a href="#">Painting - acrylic</a></li>
-        <li><a href="#">Photography</a></li>
-        <li><a href="#">Sculpture</a></li>
-      </ul>
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Period<span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <li><a href="#">Some dates</a></li>
-        <li><a href="#">Some more dates</a></li>
-        <li><a href="#">Some more dates</a></li>
-        <li><a href="#">Contemporary</a></li>
-      </ul>
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">School<span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <li><a href="#">I have no idea</a></li>
-        <li><a href="#">what schools</a></li>
-        <li><a href="#">we have</a></li>
-      </ul>
+
+
+  <div class='btn-group'>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Medium <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#">Painting - oil</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Painting - acrylicasdf</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Photography</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Sculpture</a></li>
+    </ul>
     </div>
+    <div class='btn-group'>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Period <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#">Some dates</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Some more dates</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Some more dates</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Contemporary</a></li>
+    </ul>
+    </div>
+    <div class='btn-group'>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">School <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#">I have no idea</a></li>
+      <li class="divider"></li>
+      <li><a href="#">what schools</a></li>
+      <li class="divider"></li>
+      <li><a href="#">we have</a></li>
+    </ul>
+  </div>
+  
+  <form class="searchResultsForm">
+    <input type="text" class="searchBar searchBarInput" ng-model="searchterms" placeholder="Enter search terms...">
+    <button class="searchBar searchBarButton" ng-click="search(searchterms)" >Search!</button>
+  </form>
 
+</div>
+  <div class="clearfix"></div>
+  <div class="fakeData" class='SearchResultImages'>
+    <div class="fakeDataPicture">Pic0</div>
+    <div class="fakeDataPicture">Pic1</div>
+    <div class="fakeDataPicture">Pic2</div>
+    <div class="fakeDataPicture">Pic3</div>
+    <div class="fakeDataPicture">Pic4</div>
+    <div class="fakeDataPicture">Pic5</div>
+    <div class="fakeDataPicture">Pic6</div>
+    <div class="fakeDataPicture">Pic7</div>
 
-  <div class='images' ng-repeat='art in data'>
+  </div>
+  <div class='SearchResultImages' ng-repeat='art in data'>
 
-    <div class='image' src='http://placehold.it/350x150' ng-click='select(artid)'>
-    <!-- label for image {{art.id}} {{art.artist}} {{art.date}} etc.  -->
+    <div class='SearchResultImage' src='http://placehold.it/350x150' ng-click='select(artid)'>
+      <!-- label for image {{art.id}} {{art.artist}} {{art.date}} etc.  -->
     </div>
 
   </div>  
-</div>
 
 </div>
 
