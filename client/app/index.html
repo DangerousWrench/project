@@ -3,7 +3,7 @@
 
 
 <!doctype html>
-<html class="no-js">
+<html class="no-js" style="height:100%">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -28,12 +28,12 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
+    <div class="everything">
+      <div class='header'>
         <ul class="nav nav-pills pull-right">
 
           <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">LOG IN <strong class="caret"></strong></a>
+            <a class="dropdown-toggle" href="" data-toggle="dropdown">LOG IN <strong class="caret"></strong></a>
             <div class="dropdown-menu">
             <form action="/login" method="post" accept-charset="UTF-8">
               <input class="dropdown-input" type="text" name="login_username" placeholder="Username"/>
@@ -44,7 +44,7 @@
           </li>
           <li class="divider-vertical"></li>
           <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">SIGN UP <strong class="caret"></strong></a>
+            <a class="dropdown-toggle" href="" data-toggle="dropdown">SIGN UP <strong class="caret"></strong></a>
             <div class="dropdown-menu dropdown-menu-right-aligned">
             <form action="/signup" method="post" accept-charset="UTF-8">
               <input class="dropdown-input" type="text" name="signup_username" placeholder="Username"/>
@@ -58,8 +58,8 @@
         <h3 class="navSpacing">-</h3>
       </div>
 
-      <div ng-view=""></div>
-
+      <div ng-view="" class="everything"></div>
+    
       <div class="footer">
         <p> Everyone loves footers </p>
       </div>
