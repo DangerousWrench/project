@@ -16,7 +16,7 @@ module.exports = function(app){
 
   app.post('/signup', function(req, res){
     var params = {username: req.body.signup_username, password: req.body.signup_password};
-    db.query('CREATE (n:Cat { username: ({username}), password: ({password}) })', params, function(err){
+    db.query('CREATE (n:User { username: ({username}), password: ({password}) })', params, function(err){
       if(err) { console.log(err); }
       res.redirect('/');
     })
@@ -109,8 +109,12 @@ module.exports = function(app){
   })
 
   app.get('/like/:id', function(req, res){
-    var params = { id: req.params.id, user: req.session.user.id };
+    var params = { id: parseInt(req.params.id), user: parseInt(req.user.id) };
     db.query('MATCH (n:User),(b:Work)\nWHERE id(n)=({user}) AND id(b)=({id})\nCREATE (n)-[:LIKES {rating:1}]->(b)', params, function(err){
+      if (err) console.log(err);
+      console.log('like created!');
+      console.log(req.user);
+      console.log(params);
       res.end();
     })
   })
