@@ -1,4 +1,4 @@
- google fonts */
+/* google fonts */
 @import url(http://fonts.googleapis.com/css?family=Muli:300,400,300italic,400italic);
 
 /* Space out content a bit */
@@ -63,13 +63,9 @@ body {
 @media (min-width: 768px) {
   .mainContainer {
     width: 110%;
-
     color:black;
-    border:20px solid blue;
-    background-color: red;
     transform: translate(-2.5%, 0);
   }
-    /*height:5000px;*/
   .container {
     width:80%;
   }
@@ -97,15 +93,15 @@ body {
   margin-top: 28px;
 }
 
-/* custom css for index.html and navbar */
+/* -------------- Styling for index.html (navbar) -------------- */
 
+/*  Top left logo  */
 .glyphicon-picture{
   color:#3A3B3A;
   padding:5px;
   border:4px inset #3A3B3A;
   left:15px;
-  top:-2.5px;
-  
+  top:-2.5px; 
 }
 .glyphicon-picture:hover,
 .glyphicon-picture:focus,
@@ -117,6 +113,8 @@ body {
 .navSpacing{
   visibility: hidden;
 }
+
+/* sign in and sign up buttons */
 .dropdown{
   font-family: 'Aqua', sans-serif;
   font-size:14px;
@@ -158,8 +156,7 @@ li.dropdown:first-child{
 }
 .dropdown-menu {
  outline: none;
-  }
-
+}
 .dropdown .dropdown-menu-right-aligned{
   transform: translate(-49.5%, 0);
 }
@@ -178,7 +175,6 @@ input {
   margin-bottom: 15px;
   size:30;
 }
-
 .entryButton {
   width: 100%; 
   height: 32px; 
@@ -194,7 +190,6 @@ input {
        -o-transition: border-radius .35s ease;
           transition: border-radius .35s ease;
 }
-
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
@@ -211,22 +206,19 @@ input {
 }
 
 
-/*  main.html custom css   */
+/* -------------- Styling for main.html -------------- */
 
-/*.container > .ng-scope {
-  padding:;
-  background-color: #a7a7a7;
-}*/
-
-  /*margin-top: -30px;*/
+  /* main page background image */
 .imgDiv{
   padding:10px;
   width: 100%;
   height:100%;
   background: url('http://2.bp.blogspot.com/-dlllLhl8c7s/UnrFUvtgMxI/AAAAAAAARXQ/Cv8QKBgfVD4/s1600/guernica.jpg');
   background-size: cover;
-  /*background-color: #a7a7a7;*/
 }
+
+/* -- Main page welcome container -- */
+
 .mainViewContainer {
   width:40%;
   margin: auto;
@@ -238,6 +230,7 @@ input {
 .mainViewContainer .centerbox {
   text-align: center;
 }
+/* Welcome container divider and paragraph */
 .clearfix{
   height:2px;
   width:60%;
@@ -247,8 +240,9 @@ input {
 .centerbox > p {
   width:85%;
   margin:15px auto;
-  
 }
+
+/* Welcome container search bar*/
 .searchBar{
   display:inline-block;
   margin:10px;
@@ -292,7 +286,7 @@ input {
     color: #ede7da;
 }
 
-/*Search Results Styling*/
+/* -------------- Styling for Search Results -------------- */
 
 .SearchResultsContainer{
   text-align: center;
@@ -302,6 +296,11 @@ input {
 .searchResultsForm{
   display:inline-block;
 }
+.SearchResultsHeader {
+  padding:15px;
+}
+
+/* Search bar */
 .SearchResultsContainer .searchBarInput {
   color:black;
   border:2px solid rgba(237, 231, 218, 1);
@@ -316,10 +315,8 @@ input {
   background-color: rgba(136, 203, 175, .15);
   border-radius: 0;
 }
-.SearchResultsHeader {
-  padding:15px;
-}
 
+/* Button group search filters */
 button.dropdown-toggle {
   color:black;
   border-radius: 0;
@@ -362,16 +359,17 @@ button.dropdown-toggle {
   color:black;
   padding: 0 10px;
 }
+
 .SearchResultsContainer > .clearfix{
-  /*background-color:rgba(237, 231, 218, .6);*/
   background-color:#e7e7e7; 
   height:1px;
   width:80%;
 }
+
+/* Search Results */
 .SearchResultImages {
   width:100%;
   height:400px;
-  
 }
 .fakeData {
   position:relative;
@@ -391,8 +389,9 @@ button.dropdown-toggle {
   text-align:center;
 }
 
-/*   ArtView styling   */
+/* -------------- Styling for ArtView -------------- */
 
+/* Art */
 .fakeImage{
   width:400px;
   height:400px;
@@ -400,6 +399,7 @@ button.dropdown-toggle {
   border:2px solid black;
 }
 
+/* Like Button */
 form.likeButtonForm {
   width:400px;
   text-align: center;
@@ -409,7 +409,6 @@ form.likeButtonForm {
   margin-bottom: 20px;
   height:50px;
 }
-
 form.likeButtonForm > input[type=text] {
   margin-right: 10px;
   margin-top:18px;
@@ -417,7 +416,6 @@ form.likeButtonForm > input[type=text] {
   font-size: 12px;
   padding: 5px;
 }
-
 form.likeButtonForm > input[type=submit] {
   background-color: rgba(136, 233, 175, 1);
   outline: none;
@@ -427,14 +425,10 @@ form.likeButtonForm > input[type=submit] {
   height:40px;
   color:white;
 }
-
 form.likeButtonForm > input[type=submit]:active {
   outline: none;
   box-shadow: 0px 2px 0px rgba(9, 178, 109, 1);
   transform: translate(0, 2px);
-  /*border:0;
-  border-bottom:3px solid #0DFF9C;*/
-
 }
 .likeButton {
   width:150px;
@@ -443,20 +437,11 @@ form.likeButtonForm > input[type=submit]:active {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
   .header,
   .marketing,
   .footer {
     padding-left: 0;
     padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-  }
-    /*margin-bottom: 30px;*/
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
   }
 }
 /**/
