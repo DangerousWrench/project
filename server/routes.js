@@ -24,7 +24,7 @@ module.exports = function(app){
 
   app.post('/login', passport.authenticate('local'), function(req, res){
     console.log(req.user);
-    res.redirect('/')
+    res.redirect('#/homepage/' + req.user._data.data.username);
   })
 
   //needs s3
