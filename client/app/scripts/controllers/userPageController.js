@@ -19,6 +19,7 @@ angular.module('dangerousWrenchApp')
         $scope.userLikesResults = data.data;
         console.log($scope.userLikesResults);
         console.log('Retrieved users likes!');
+        console.log($scope.userLikesResults)
       })
       .catch(function(){
         console.log('Failed to find users likes :|')
