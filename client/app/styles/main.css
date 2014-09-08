@@ -447,6 +447,19 @@ form.likeButtonForm > input[type=submit]:active {
   width:150px;
 }
 
+/* -------------- Styling for UserPage -------------- */
+
+.centerBanner{
+  width:60%;
+  margin:30px auto;
+  text-align: center;
+
+}
+
+.centerBanner > h2,
+.centerBanner > form{
+  display: inline-block;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
