@@ -37,7 +37,7 @@ angular
         controller: 'ArtCtrl'
       })
       .when('/homepage/:user', {
-        templateUrl: 'userPageView.html',
+        templateUrl: 'views/userPageView.html',
         controller: 'UserController'
       })
       .otherwise({

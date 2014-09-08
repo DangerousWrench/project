@@ -1,7 +1,7 @@
 //use 'strict';
 
 angular.module('dangerousWrenchApp')
-  .controller('UserController', function ($scope, KeywordSearch, userServices, $routParams) {
+  .controller('UserController', function ($scope, KeywordSearch, userServices, $routeParams) {
 
     $scope.searchterms;
     $scope.displayResults = function() {
