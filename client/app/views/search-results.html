@@ -65,9 +65,9 @@
     <div class="fakeDataPicture">Pic6</div>
     <div class="fakeDataPicture">Pic7</div>
 
-  <div class='SearchResultImages' ng-repeat='art in artData'>
+  <div class='images' ng-repeat='art in artData'>
     <a href = "/#/art/{{art.id}}">
-    <div class='SearchResultImage' src='http://placehold.it/350x150' ng-click='artid = {{art.id}}; select(artid)'>
+    <img class='image' src='{{art.url}}' height="100" width="100">
       <table class="artInfo">
         <tr>{{art.title}}
           <td>Artist: {{art.artist}}</td>
