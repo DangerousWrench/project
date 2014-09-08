@@ -1,44 +1,41 @@
 <div class="container userPageViewContainer">
+  
   <div class="centerBanner">
-    <h2> CatSafari!
-    </h2>
-    <p> Here at Le Safar du chats we like to keep our visitors happy by writing nonsense in all of our banners, cause who doesnt love footers?!1?</p> 
-    <p class="banner divider"> </p>
+
     <form class="searchResultsForm">
       <input type="text" class="searchBar searchBarInput" ng-model="searchterms" placeholder="Enter search terms...">
       <button class="searchBar searchBarButton" ng-click="displayResults()" >Search!</button>
   </form>
+    </br>
+  <h2> My Likes </h2>
     
   </div>
+
+  <div class="clearfix"></div>
 
   
 
   <!-- The left half of the user page displays the users liked photos -->
   <div class="leftAlign">
-    <h3>
-      Your Likes
-    </h3>
-    <div class="resultsDisplay">
-      <!-- rows of liked art -->
-    <div class='images' ng-repeat='result in userLikesResults'>
-      <a href = "/#/art/{{result.id}}">
-      <img class='image' src='{{result.url}}' height="100" width="100">
-        <table class="artInfo">
-          <tr>{{result.title}}
-            <td>Artist: {{result.artist}}</td>
-          </tr>
-        </table>
-      </a>
-    </div>  
 
-   </div>
+  
+  <div class="allSearchResults">
+  <div class='SearchResultsImages' ng-repeat='result in userLikesResults'>
+      <a href = "/#/art/{{result.id}}">
+      <img class='resultImage' src='{{result.url}}' max-width="20%" max-height="200">
+      </a>
+    <div class="artInfo">
+        <i>{{result.title}}</i>
+        </br>
+        Artist: {{result.artist}}
+    </div>
+
+  </div> 
+  </div>
 
   </div>
  <!-- The right half of page displays recommended photos, etc. -->
   <div class="rightAlign">
-  <h3>
-    Recommended Pieces
-  </h3>
   <!-- rows of recommended art-->
   <div class="resultsDisplay">
 
@@ -48,10 +45,6 @@
        <td>{{result[0]}}</td><td>{{result[1]}}</td>
      </tr>
 
-     <!-- the action link below sends the ID to the server to create the user-art edge -->
-     <form class="form-inline" role="form" action="">
-       <input type="submit" value="Like this piece">
-     </form>
    </table>
 
 
