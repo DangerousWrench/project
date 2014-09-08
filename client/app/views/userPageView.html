@@ -3,7 +3,7 @@
     <h2> CatSafari!
     </h2>
     <p> Here at Le Safar du chats we like to keep our visitors happy by writing nonsense in all of our banners, cause who doesnt love footers?!1?</p> 
-    <p class="banner divider"> - --------- ---- - ---- -- -- -- - -</p>
+    <p class="banner divider"> </p>
     <form class="searchResultsForm">
       <input type="text" class="searchBar searchBarInput" ng-model="searchterms" placeholder="Enter search terms...">
       <button class="searchBar searchBarButton" ng-click="displayResults()" >Search!</button>
@@ -20,12 +20,17 @@
     </h3>
     <div class="resultsDisplay">
       <!-- rows of liked art -->
+    <div class='images' ng-repeat='result in userLikesResults'>
+      <a href = "/#/art/{{result.id}}">
+      <img class='image' src='{{result.url}}' height="100" width="100">
+        <table class="artInfo">
+          <tr>{{result.title}}
+            <td>Artist: {{result.artist}}</td>
+          </tr>
+        </table>
+      </a>
+    </div>  
 
-      <table class="userLikes">
-       <tr ng-repeat="result in results">
-         <td>{{result.title}}</td><td>{{result[1]}}</td>
-       </tr>
-     </table>
    </div>
 
   </div>
