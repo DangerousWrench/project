@@ -4,8 +4,14 @@
     </h2>
     <p> Here at Le Safar du chats we like to keep our visitors happy by writing nonsense in all of our banners, cause who doesnt love footers?!1?</p> 
     <p class="banner divider"> - --------- ---- - ---- -- -- -- - -</p>
-    <!-- Search Bar? -->
+    <form class="searchResultsForm">
+      <input type="text" class="searchBar searchBarInput" ng-model="searchterms" placeholder="Enter search terms...">
+      <button class="searchBar searchBarButton" ng-click="displayResults()" >Search!</button>
+  </form>
+    
   </div>
+
+  
 
   <!-- The left half of the user page displays the users liked photos -->
   <div class="leftAlign">
@@ -17,7 +23,7 @@
 
       <table class="userLikes">
        <tr ng-repeat="result in results">
-         <td>{{result[0]}}</td><td>{{result[1]}}</td>
+         <td>{{result.title}}</td><td>{{result[1]}}</td>
        </tr>
      </table>
    </div>

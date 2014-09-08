@@ -24,7 +24,7 @@ module.exports = function(app){
 
   app.post('/login', passport.authenticate('local'), function(req, res){
     console.log(req.user);
-    res.redirect('#/homepage/' + req.user._data.data.username);
+    res.redirect('/#/homepage/' + req.user._data.data.username);
   })
 
   //needs s3
@@ -71,11 +71,15 @@ module.exports = function(app){
     //'like' here = edge between usernode and artwork node
 
     var params = {username: req.body.username}; 
-    db.query('MATCH (n:User {username: ({username})}-[:LIKES]->(m:Work) RETURN m limit 1000', params, function(err, data) {
-      if (err) console.log(err);
+    db.query('MATCH (n:User {username: ({username})})-[:LIKES]->(m:Work)\nRETURN m limit 1000', params, function(err, data) {
+      if (err) console.log('neo4j', err);
+      console.log('data', data)
       var likesObj = utils.makeData(data, 'm');
+      console.log('likesObj', likesObj)
       likesObj = utils.appendUrl(likesObj);
-      likesObj = JSON.stringify(likesObj);
+      console.log('utils likes obj', likesObj)
+      likesObj = JSON.stringify({results: likesObj});
+      console.log('stringified', likesObj)
       res.end(likesObj);
     })
   })

@@ -6,7 +6,7 @@ angular.module('dangerousWrenchApp')
         return $http({
           method: 'POST',
           url: '/generateUserLikes', 
-          data: {username} 
+          data: username 
         })
       },
 
@@ -15,7 +15,7 @@ angular.module('dangerousWrenchApp')
         return $http({
           method: 'POST',
           url: '/generateRecommendations', 
-          data: {username} 
+          data: username 
         }) 
       }
     }

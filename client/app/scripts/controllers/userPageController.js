@@ -1,7 +1,7 @@
 //use 'strict';
 
 angular.module('dangerousWrenchApp')
-  .controller('UserController', function ($scope, KeywordSearch, userServices, $routParams) {
+  .controller('UserController', function ($scope, KeywordSearch, userServices, $routeParams) {
 
     $scope.searchterms;
     $scope.displayResults = function() {
@@ -19,6 +19,7 @@ angular.module('dangerousWrenchApp')
         $scope.userLikesResults = data.data;
         console.log($scope.userLikesResults);
         console.log('Retrieved users likes!');
+        console.log($scope.userLikesResults)
       })
       .catch(function(){
         console.log('Failed to find users likes :|')
