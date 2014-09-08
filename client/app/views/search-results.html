@@ -47,35 +47,26 @@
     </ul>
   </div>
   
-  <form class="searchResultsForm">
+  <form class="SearchResultsForm">
     <input type="text" class="searchBar searchBarInput" ng-model="searchterms" placeholder="Enter search terms...">
     <button class="searchBar searchBarButton" ng-click="search(searchterms)" >Search!</button>
   </form>
 
 </div>
   <div class="clearfix"></div>
-  
-  <div class="fakeData" class='SearchResultImages'>
-    <div class="fakeDataPicture">Pic0</div>
-    <div class="fakeDataPicture">Pic1</div>
-    <div class="fakeDataPicture">Pic2</div>
-    <div class="fakeDataPicture">Pic3</div>
-    <div class="fakeDataPicture">Pic4</div>
-    <div class="fakeDataPicture">Pic5</div>
-    <div class="fakeDataPicture">Pic6</div>
-    <div class="fakeDataPicture">Pic7</div>
-
-  <div class='images' ng-repeat='art in artData'>
+  <div class="allSearchResults">
+  <div class='SearchResultsImages' ng-repeat='art in artData'>
     <a href = "/#/art/{{art.id}}">
-    <img class='image' src='{{art.url}}' height="100" width="100">
-      <table class="artInfo">
-        <tr>{{art.title}}
-          <td>Artist: {{art.artist}}</td>
-        </tr>
-      </table>
+    <img class='resultImage' src='{{art.url}}' max-width="20%" max-height="200">
     </a>
+    <div class="artInfo">
+        <i>{{art.title}}</i>
+        </br>
+        Artist: {{art.artist}}
+    </div>
 
-  </div>  
+  </div> 
+  </div> 
 
 </div>
 
