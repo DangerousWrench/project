@@ -98,16 +98,16 @@ body {
 /* -------------- Styling for index.html (navbar) -------------- */
 
 /*  Top left logo  */
-.glyphicon-picture{
+.glyphicon-leaf{
   color:#3A3B3A;
   padding:5px;
   border:4px inset #3A3B3A;
   left:15px;
   top:-2.5px; 
 }
-.glyphicon-picture:hover,
-.glyphicon-picture:focus,
-.glyphicon-picture:active{
+.glyphicon-leaf:hover,
+.glyphicon-leaf:focus,
+.glyphicon-leaf:active{
   color:#BEAA86;
   border:4px inset #6f5c3b;
   text-decoration: none;
