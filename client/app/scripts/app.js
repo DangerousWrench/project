@@ -1,11 +1,6 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name dangerousWrenchApp
- * @description
- * # dangerousWrenchApp
- *
+/*
  * Main module of the application.
  */
 angular
