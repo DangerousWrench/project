@@ -1,5 +1,5 @@
 var neo4j = require('neo4j');
-var db = new neo4j.GraphDatabase();
+var db = new neo4j.GraphDatabase('http://app29028125:ZcUY4iYVR6P8MKPj1Z5c@app29028125.sb02.stations.graphenedb.com:24789');
 var LocalStrategy = require('passport-local').Strategy;
 
 var passport = require('passport');
@@ -26,7 +26,10 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  Author.findById(id, function(err, user) {
+  var params = {id: id};
+  db.query('MATCH (n:Cat)\nWHERE id(n)=({id})\nRETURN n',params, function(err, data) {
+    if(err){ console.log(err); }
+    var user = data[0].n;
     done(err, user);
   });
 });
