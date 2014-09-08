@@ -1,10 +1,7 @@
 //establish a connection to the database
 var neo4j = require('neo4j');
 var passport = require('./passport-config.js')
-var db = new neo4j.GraphDatabase(
-  'http://app29028125:ZcUY4iYVR6P8MKPj1Z5c@app29028125.sb02.stations.graphenedb.com:24789'
-    // process.env['GRAPHENE_DB'] || 'http://localhost:7474'
-);
+var db = new neo4j.GraphDatabase(process.env['GRAPHENEDB_URL'] || 'http://localhost:7474');
 var utils = require('./utils.js');
 
 module.exports = function(app){
@@ -104,8 +101,9 @@ module.exports = function(app){
     console.log(query)
     db.query(query, function(err, data) {
       if (err) console.log(err);
-      var searchResult = JSON.stringify(utils.makeData(data, 'n'));
-      console.log(searchterms)
+      var searchResult = utils.makeData(data, 'n');
+      searchResult = utils.appendUrl(searchResult);
+      searchResult = JSON.stringify(searchResult);
       res.end(searchResult);
     })
   })
