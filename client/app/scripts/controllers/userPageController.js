@@ -2,12 +2,6 @@
 
 angular.module('dangerousWrenchApp')
   .controller('UserController', function ($scope, KeywordSearch, userServices) {
-<<<<<<< HEAD
-    
-    //Im not quite sure how the recommendation engine will work, but 
-    // my small mind tells me it will be something like the following
-    // 
-=======
 
     $scope.searchterms;
     $scope.displayResults = function() {
@@ -16,7 +10,6 @@ angular.module('dangerousWrenchApp')
 
     $scope.username = $location.search().q;
   
->>>>>>> userpage controller and factor
     //generateUserLikes is the factory function that queries 
     //for a specific users 'liked' art
     $scope.displayUserLikes = userServices.generateUserLikes;
