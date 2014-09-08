@@ -1,9 +1,6 @@
 <div class="container">
-	<!-- src may need to be adjusted based on s3 bucket formatting -->
-	<img class="artImage" src="{{work.url}}">
-	<div class="fakeImage"></div>
-	<!-- display art details -->
-	<!-- this assumes that we'll have a function that queries the DB and returns art results in touples: keys and values; may have to change it based on DB formatting -->
+	<div class="fakeImage"><img class="artImage" src="{{work.url}}"></div>
+
 	<table class="artInfo">
 		<tr ng-repeat="result in results">
 			<td>{{result.type}}</td><td>{{result.value}}</td>
@@ -11,7 +8,5 @@
 	</table>
 
 	<!-- the action link below will send the ID to the server to create the user-art edge -->
-	<form class="form-inline likeButtonForm" role="form" action="{{'like/' + art.id}}">
-		<input type="submit" class="btn likeButton" value="Like this piece">
-	</form>
+	<a href="/like/{{work.id}}">Like</a>
 </div>

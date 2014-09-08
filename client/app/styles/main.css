@@ -394,11 +394,18 @@ button.dropdown-toggle {
 /* -------------- Styling for ArtView -------------- */
 
 /* Art */
+.artImage {
+  max-width: 400px;
+  max-height: 400px;
+  border:2px solid black;
+}
+
 .fakeImage{
   width:400px;
   height:400px;
   margin:auto;
-  border:2px solid black;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 /* Like Button */
