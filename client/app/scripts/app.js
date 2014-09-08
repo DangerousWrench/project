@@ -36,6 +36,10 @@ angular
         templateUrl: 'views/art.html',
         controller: 'ArtCtrl'
       })
+      .when('/homepage/:user', {
+        templateUrl: 'views/userPageView.html',
+        controller: 'UserController'
+      })
       .otherwise({
         redirectTo: '/'
       });

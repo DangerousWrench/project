@@ -1,14 +1,14 @@
 //use 'strict';
 
 angular.module('dangerousWrenchApp')
-  .controller('UserController', function ($scope, KeywordSearch, userServices) {
+  .controller('UserController', function ($scope, KeywordSearch, userServices, $routeParams) {
 
     $scope.searchterms;
     $scope.displayResults = function() {
       KeywordSearch.displayResults($scope.searchterms);
     };
 
-    $scope.username = $location.search().q;
+    $scope.username = $routeParams.user
   
     //generateUserLikes is the factory function that queries 
     //for a specific users 'liked' art
@@ -19,6 +19,7 @@ angular.module('dangerousWrenchApp')
         $scope.userLikesResults = data.data;
         console.log($scope.userLikesResults);
         console.log('Retrieved users likes!');
+        console.log($scope.userLikesResults)
       })
       .catch(function(){
         console.log('Failed to find users likes :|')
