@@ -1,10 +1,7 @@
 //establish a connection to the database
 var neo4j = require('neo4j');
 var passport = require('./passport-config.js')
-var db = new neo4j.GraphDatabase(
-  'http://app29028125:ZcUY4iYVR6P8MKPj1Z5c@app29028125.sb02.stations.graphenedb.com:24789'
-    // process.env['GRAPHENE_DB'] || 'http://localhost:7474'
-);
+var db = new neo4j.GraphDatabase(process.env['GRAPHENEDB_URL'] || 'http://localhost:7474');
 var utils = require('./utils.js');
 
 module.exports = function(app){
@@ -51,11 +48,11 @@ module.exports = function(app){
   //needs s3
   app.post('/generateRecommendations', function(req, res) {
     // 'Person' may have to be replaced with whatever we end up labelling user nodes
-    db.query('MATCH (p1:Person)-[x:LIKES]->(m:Work)<-[y:LIKES]-(p2:Person) WITH SUM(x.rating * y.rating) AS xyDotProduct, SQRT(REDUCE(xDot = 0.0, a IN COLLECT(x.rating) | xDot + a^2)) AS xLength, SQRT(REDUCE(yDot = 0.0, b IN COLLECT(y.rating) | yDot + b^2)) AS yLength, p1, p2 MERGE (p1)-[s:SIMILARITY]-(p2) SET s.similarity = xyDotProduct / (xLength * yLength)', function(err, data) {
+    db.query('MATCH (p1:User)-[x:LIKES]->(m:Work)<-[y:LIKES]-(p2:User) WITH SUM(x.rating * y.rating) AS xyDotProduct, SQRT(REDUCE(xDot = 0.0, a IN COLLECT(x.rating) | xDot + a^2)) AS xLength, SQRT(REDUCE(yDot = 0.0, b IN COLLECT(y.rating) | yDot + b^2)) AS yLength, p1, p2 MERGE (p1)-[s:SIMILARITY]-(p2) SET s.similarity = xyDotProduct / (xLength * yLength)', function(err, data) {
       if (err) console.log(err);
       var username = req.body.username;
       // m.name may have to be replaced with whatever we end up calling the name property/identifier of a work
-      db.query('MATCH (b:Person)-[r:LIKES]->(m:Work), (b)-[s:SIMILARITY]-(a:Person {username:"'+ username +'"}) WHERE NOT((a)-[:LIKES]->(m)) WITH m, s.similarity AS similarity, r.rating AS rating ORDER BY m.name, similarity DESC WITH m.name AS work, COLLECT(rating)[0..3] AS ratings WITH work, REDUCE(s = 0, i IN ratings | s + i)*1.0 / LENGTH(ratings) AS reco ORDER BY reco DESC RETURN work AS Work, reco AS Recommendation', username, function(err, data) {
+      db.query('MATCH (b:User)-[r:LIKES]->(m:Work), (b)-[s:SIMILARITY]-(a:User {username:"'+ username +'"}) WHERE NOT((a)-[:LIKES]->(m)) WITH m, s.similarity AS similarity, r.rating AS rating ORDER BY m.title, similarity DESC WITH m.title AS work, COLLECT(rating)[0..3] AS ratings WITH work, REDUCE(s = 0, i IN ratings | s + i)*1.0 / LENGTH(ratings) AS reco ORDER BY reco DESC RETURN work AS Work, reco AS Recommendation', username, function(err, data) {
         if (err) console.log(err);
         // these may have to be replaced with the lower-case references
         var works = utils.makeData(data, 'Work');
@@ -74,7 +71,7 @@ module.exports = function(app){
     //'like' here = edge between usernode and artwork node
 
     var params = {username: req.body.username}; 
-    db.query('MATCH (n:Person {username: ({username})}-[:LIKES]->(m:Work) RETURN m limit 1000', params, function(err, data) {
+    db.query('MATCH (n:User {username: ({username})}-[:LIKES]->(m:Work) RETURN m limit 1000', params, function(err, data) {
       if (err) console.log(err);
       var likesObj = utils.makeData(data, 'm');
       likesObj = utils.appendUrl(likesObj);
@@ -104,8 +101,9 @@ module.exports = function(app){
     console.log(query)
     db.query(query, function(err, data) {
       if (err) console.log(err);
-      var searchResult = JSON.stringify(utils.makeData(data, 'n'));
-      console.log(searchterms)
+      var searchResult = utils.makeData(data, 'n');
+      searchResult = utils.appendUrl(searchResult);
+      searchResult = JSON.stringify(searchResult);
       res.end(searchResult);
     })
   })

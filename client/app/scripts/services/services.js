@@ -5,11 +5,13 @@ angular.module('dangerousWrenchApp')
   .factory('KeywordSearch', function ($http, $location, $q, $rootScope, $timeout) {
     
     return {
+      //called on main page.  Appends search term(s) to url and redirects to search results page. 
       displayResults: function(data) {
-      $location.path('/search-results');
-      $timeout(function(){$rootScope.$broadcast('redirected', {data: data});}, [100]);
+        $location.path('/search-results').search('q', data);
       },
 
+      //sends search terms to server for database search.
+      //response handled in controller. 
       search: function(searchterms) {
         var searchterms = JSON.stringify({searchterms: searchterms});
         console.log(searchterms)
@@ -27,42 +29,5 @@ angular.module('dangerousWrenchApp')
         return deferred.promise;
       }
     }
-  //   var Search = {
-  //     search: function(searchterms) {
-  //       searchterms = JSON.stringify({searchterms: searchterms});
-  //       return $http({
-  //         method: 'POST',
-  //         url: '/KeywordSearch',
-  //         data: searchterms
-  //       })
-  //       .then(function (response) {
-  //         response = response.data;
-  //         displayResults(response); 
-  //         console.log(response);
-  //       }).catch(function(err) {
-  //         console.log('error in getting search results');        
-  //       })
-  //   }
-  // }
-  //   return Search;
   })
-
-  // .factory('SelectPiece', function ($http) {
-  //   return {
-  //     getimage: function(artid){
-  //       return $http({
-  //         method: 'POST',
-  //         url: '/generateArtInfo',
-  //         data: artid
-  //       }).then(function(response) {
-  //         $location.path(__dirname + '/' + artid);
-  //       }).catch(function(err) {
-  //         console.log(artid);
-  //         console.log('error accessing image')
-  //       })
-  //       console.log('getting image');
-  //       if (artid) {
-  //         console.log(artid);
-  //       }
-  //     }
-  //   };
+  

@@ -16,10 +16,12 @@ angular.module('dangerousWrenchApp')
     };
   })
 
-  .controller('SearchResultsCtrl', function ($scope, $rootScope, KeywordSearch) {
+  .controller('SearchResultsCtrl', function ($scope, $location, $rootScope, KeywordSearch) {
     $scope.searchterms;
     $scope.artData = {};
+
     $scope.search = function() {
+      $location.search('q', $scope.searchterms);
       KeywordSearch.search($scope.searchterms)
         .then(function (response) {
           $scope.artData = response.data;
@@ -27,10 +29,12 @@ angular.module('dangerousWrenchApp')
           console.log(error);
         })
     };
-    $rootScope.$on('redirected', function (event, data) {
-      $scope.searchterms = data.data;
+    console.log('q is', $location.search().q);
+    var q = $location.search().q;
+    if (q != null) {
+      $scope.searchterms = q;
       $scope.search();
-    });
+    };
 })
 
 
