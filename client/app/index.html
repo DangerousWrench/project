@@ -9,26 +9,17 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
+ 
+    <!-- Styles / fonts -->
     <link rel="stylesheet" type="text/css" media="all" href="styles/fonts.css" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
 
-    <!-- endbuild -->
   </head>
   <body ng-app="dangerousWrenchApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <!-- Add your site or application content here -->
-    <div class="everything">
+ 
+    <div class="mainElement">
       <div class='header'>
         <ul class="nav nav-pills pull-right">
 
@@ -42,7 +33,9 @@
             </form>
             </div>
           </li>
+
           <li class="divider-vertical"></li>
+          
           <li class="dropdown">
             <a class="dropdown-toggle" href="" data-toggle="dropdown">SIGN UP <strong class="caret"></strong></a>
             <div class="dropdown-menu dropdown-menu-right-aligned">
@@ -53,12 +46,13 @@
             </form>
             </div>
           </li>
+
         </ul>
         <h3 class="active logo text-muted"><a ng-href="#" class='glyphicon glyphicon-picture'></a></h3>
         <h3 class="navSpacing">-</h3>
       </div>
 
-      <div ng-view="" class="everything"></div>
+      <div ng-view="" class="mainElement"></div>
     
       <div class="footer">
         <p> Everyone loves footers </p>
@@ -77,13 +71,6 @@
        ga('send', 'pageview');
     </script>
 
-    <!-- build:js(.) scripts/oldieshim.js -->
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
-    <!-- endbuild -->
-
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -100,14 +87,14 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/art.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/userPageController.js"></script>
-        <script src="scripts/services/services.js"></script>
-        <script src="scripts/services/artServices.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/art.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/userPageController.js"></script>
+    <script src="scripts/services/services.js"></script>
+    <script src="scripts/services/artServices.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
