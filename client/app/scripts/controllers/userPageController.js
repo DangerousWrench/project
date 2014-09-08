@@ -3,14 +3,6 @@
 angular.module('dangerousWrenchApp')
   .controller('UserController', function ($scope, KeywordSearch, userServices) {
     
-    //included searchterms in case a search bar is included in the user page
-    $scope.searchterms;
-    $scope.search = KeywordSearch.search;
-
-
-
-
-
     //Im not quite sure how the recommendation engine will work, but 
     // my small mind tells me it will be something like the following
     // 
