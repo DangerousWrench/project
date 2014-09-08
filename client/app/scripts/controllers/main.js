@@ -25,6 +25,7 @@ angular.module('dangerousWrenchApp')
       KeywordSearch.search($scope.searchterms)
         .then(function (response) {
           $scope.artData = response.data;
+          console.log($scope.artData);
         }, function (error) {
           console.log(error);
         })
