@@ -384,6 +384,8 @@ button.dropdown-toggle {
 .resultImage{
   padding: 4px;
   border:4px double rgba(237, 231, 218, 1);
+  max-height: 200px;
+  max-width: 200px;
 }
 .artInfo{
   padding-top: 5px;
