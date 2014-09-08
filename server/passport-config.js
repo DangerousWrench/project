@@ -1,5 +1,5 @@
 var neo4j = require('neo4j');
-var db = new neo4j.GraphDatabase(process.env['GRAPHENEDB_URL'] || 'http://localhost:7474');
+var db = new neo4j.GraphDatabase();
 var LocalStrategy = require('passport-local').Strategy;
 
 var passport = require('passport');
