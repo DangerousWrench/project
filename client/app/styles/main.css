@@ -1,15 +1,26 @@
-/* google fonts */
+ google fonts */
 @import url(http://fonts.googleapis.com/css?family=Muli:300,400,300italic,400italic);
 
 /* Space out content a bit */
+html{
+  height:100%;
+}
 body {
-  margin-top: 15px;
+  margin-top: 0;
   font-family: 'Muli', sans-serif;
-  width:95%;
+  width:100%;
   overflow-x: hidden;
+  height:100%;
+}
+.everything{
+  height:100%;
+  background-size: cover;
 }
 
 
+
+
+/*----------------------------*/
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -25,16 +36,21 @@ body {
 
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-  margin-top: -10px;
   line-height: 30px;
   padding-bottom: 10px;
-  margin-left:15px;
+  margin-left:5px;
+  margin-top:5px; 
 }
 
 .header .logo {
-  float: left;
-  margin-right:15px;
+  float:left;
+  margin:0;
+  margin-top: 5px;
+  left:5px;
+  top:-2.5px;
 }
+
+/*----------------------------*/
 
 /* Custom page footer */
 .footer {
@@ -45,11 +61,20 @@ body {
 
 /* Customize container */
 @media (min-width: 768px) {
-  .container {
-    /*width: 100%;*/
+  .mainContainer {
+    width: 110%;
+
+    color:black;
+    border:20px solid blue;
+    background-color: red;
     transform: translate(-2.5%, 0);
   }
+    /*height:5000px;*/
+  .container {
+    width:80%;
+  }
 }
+
 .container-narrow > hr {
   margin: 10px 0;
 }
@@ -75,12 +100,12 @@ body {
 /* custom css for index.html and navbar */
 
 .glyphicon-picture{
-  position:fixed;
   color:#3A3B3A;
   padding:5px;
   border:4px inset #3A3B3A;
-  left:3%;
-  top:-8px;
+  left:15px;
+  top:-2.5px;
+  
 }
 .glyphicon-picture:hover,
 .glyphicon-picture:focus,
@@ -127,12 +152,15 @@ li.dropdown:first-child{
   background-color: #3A3B3A;
   border-radius: 2px;
   width:230px;
+}
+.dropdown .dropdown-menu {
   transform: translate(4%, 0);
 }
 .dropdown-menu {
  outline: none;
   }
-.dropdown-menu-right-aligned{
+
+.dropdown .dropdown-menu-right-aligned{
   transform: translate(-49.5%, 0);
 }
 input {
@@ -190,17 +218,19 @@ input {
   background-color: #a7a7a7;
 }*/
 
+  /*margin-top: -30px;*/
 .imgDiv{
   padding:10px;
-  margin-top: -30px;
   width: 100%;
   height:100%;
   background: url('http://2.bp.blogspot.com/-dlllLhl8c7s/UnrFUvtgMxI/AAAAAAAARXQ/Cv8QKBgfVD4/s1600/guernica.jpg');
+  background-size: cover;
   /*background-color: #a7a7a7;*/
 }
 .mainViewContainer {
   width:40%;
-  margin: 150px auto;
+  margin: auto;
+  margin-top: 10%;
   padding:15px;
   border:3px solid #535553;
   background-color: white;
@@ -212,26 +242,30 @@ input {
   height:2px;
   width:60%;
   margin:auto;
-  background-color: rgba(136, 203, 175, .2);
-  margin-top: 20px;
+  background-color: rgba(136, 203, 175, .2);  
 }
 .centerbox > p {
   width:85%;
-  margin:auto;
-  margin-bottom: 15px;
+  margin:15px auto;
+  
 }
 .searchBar{
+  display:inline-block;
   margin:10px;
   border:none;
   border:1px solid #F5F2EB;
   background-color: white;
-  color:rgba(136, 203, 175, .9);
 }
 .searchBarButton{
-  background-color: rgba(136, 203, 175, .2);
-  border:2px solid rgba(136, 203, 175, .9);
-  border-radius: 4px;
+  color:rgba(136, 203, 175, 1);
+  background-color: rgba(136, 203, 175, .15);
+  border:1px solid rgba(136, 203, 175, .9);
+  border-radius: 2px;
   height:25px;
+  margin-left:0px;
+}
+.searchBarInput{
+  color:black;
 }
 .searchBarInput:active,
 .searchBarInput:hover,
@@ -257,8 +291,153 @@ input {
 :-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #ede7da;
 }
+
+/*Search Results Styling*/
+
+.SearchResultsContainer{
+  text-align: center;
+  width:100%;
+  margin:auto;
+}
+.searchResultsForm{
+  display:inline-block;
+}
+.SearchResultsContainer .searchBarInput {
+  color:black;
+  border:2px solid rgba(237, 231, 218, 1);
+  border-radius:0;
+  height: 35px;
+  transform: translate(0, 2px);
+  margin-left: 5px;
+}
+.SearchResultsContainer .searchBarButton {
+  height: 30px;
+  border: none;
+  background-color: rgba(136, 203, 175, .15);
+  border-radius: 0;
+}
+.SearchResultsHeader {
+  padding:15px;
+}
+
+button.dropdown-toggle {
+  color:black;
+  border-radius: 0;
+  margin-left:0px;
+  margin-right:0px;
+  background-color: rgba(237, 231, 218, .3);
+  border: 4px solid rgba(237, 231, 218, 1);
+  
+}
+.btn-group > .btn:last-child:not(:first-child), 
+.btn-group > .dropdown-toggle:not(:first-child) {
+  border-radius: 0px;
+  }
+
+.SearchResultsHeader > .btn-group > .dropdown-menu{
+  background-color: white;
+  width:200px;
+  padding:10px;
+  margin:0;
+}
+.btn-group.open .dropdown-toggle{
+  box-shadow: none;
+}
+.btn-default:hover,
+ .btn-default:focus,
+ .btn-default:active,
+ .btn-default.active,
+ .open > .dropdown-toggle.btn-default {
+  background-color: rgba(237, 231, 218, .7);
+  border-color:rgba(237, 231, 218, 1);
+ }
+
+.dropdown-menu > li > a:hover, 
+.dropdown-menu > li > a:focus {
+  background-color: rgba(237, 231, 218, .5);
+  box-shadow: 0 0 20px rgba(237, 231, 218, 1);
+}
+
+.dropdown-menu > li > a {
+  color:black;
+  padding: 0 10px;
+}
+.SearchResultsContainer > .clearfix{
+  /*background-color:rgba(237, 231, 218, .6);*/
+  background-color:#e7e7e7; 
+  height:1px;
+  width:80%;
+}
+.SearchResultImages {
+  width:100%;
+  height:400px;
+  
+}
+.fakeData {
+  position:relative;
+  width:100%;
+  height:100%;
+}
+.fakeDataPicture {
+  position:relative;
+  display:inline-block;
+  width:20%;
+  height:200px;
+  margin:25px;
+  border:1px solid black;
+  background-color: #e7e7e7
+}
 .footer{
   text-align:center;
+}
+
+/*   ArtView styling   */
+
+.fakeImage{
+  width:400px;
+  height:400px;
+  margin:auto;
+  border:2px solid black;
+}
+
+form.likeButtonForm {
+  width:400px;
+  text-align: center;
+  margin:auto;
+  padding: 25px;
+  padding-left: 0;
+  margin-bottom: 20px;
+  height:50px;
+}
+
+form.likeButtonForm > input[type=text] {
+  margin-right: 10px;
+  margin-top:18px;
+  height:40px;
+  font-size: 12px;
+  padding: 5px;
+}
+
+form.likeButtonForm > input[type=submit] {
+  background-color: rgba(136, 233, 175, 1);
+  outline: none;
+  border:0;
+  border-radius: 2px;
+  box-shadow: 0px 4px 0px rgba(9, 178, 109, 1);
+  height:40px;
+  color:white;
+}
+
+form.likeButtonForm > input[type=submit]:active {
+  outline: none;
+  box-shadow: 0px 2px 0px rgba(9, 178, 109, 1);
+  transform: translate(0, 2px);
+  /*border:0;
+  border-bottom:3px solid #0DFF9C;*/
+
+}
+.likeButton {
+  width:150px;
 }
 
 
@@ -273,8 +452,8 @@ input {
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
   }
+    /*margin-bottom: 30px;*/
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
