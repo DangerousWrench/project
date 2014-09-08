@@ -1,14 +1,14 @@
 //use 'strict';
 
 angular.module('dangerousWrenchApp')
-  .controller('UserController', function ($scope, KeywordSearch, userServices) {
+  .controller('UserController', function ($scope, KeywordSearch, userServices, $routParams) {
 
     $scope.searchterms;
     $scope.displayResults = function() {
       KeywordSearch.displayResults($scope.searchterms);
     };
 
-    $scope.username = $location.search().q;
+    $scope.username = $routeParams.user
   
     //generateUserLikes is the factory function that queries 
     //for a specific users 'liked' art
