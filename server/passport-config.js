@@ -7,7 +7,7 @@ var passport = require('passport');
 passport.use(new LocalStrategy(
   function(username, password, done){
     var params = {username: username, password: password};
-    db.query('MATCH (n:Cat)\nWHERE n.username=({username})\nRETURN n',params, function(err, data){
+    db.query('MATCH (n:User)\nWHERE n.username=({username})\nRETURN n',params, function(err, data){
       if(err){ return done(err)}
       if(!data){
         return done(null, false, { message: 'incorrect username' });
@@ -27,7 +27,7 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
   var params = {id: id};
-  db.query('MATCH (n:Cat)\nWHERE id(n)=({id})\nRETURN n',params, function(err, data) {
+  db.query('MATCH (n:User)\nWHERE id(n)=({id})\nRETURN n',params, function(err, data) {
     if(err){ console.log(err); }
     var user = data[0].n;
     done(err, user);

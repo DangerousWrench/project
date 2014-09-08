@@ -8,6 +8,7 @@ angular.module('dangerousWrenchApp')
         console.log(data.data);
         $scope.results = data.data.features;
         $scope.work = data.data.painting;
+        console.log($scope.work.id);
         console.log($scope.results);
         console.log('Successfully generated info!');
       })
