@@ -16,7 +16,7 @@ angular.module('dangerousWrenchApp')
 
     $scope.displayUserLikes($scope.username)
       .then(function(data) {
-        $scope.userLikesResults = data.data;
+        $scope.userLikesResults = data.data.results;
         console.log($scope.userLikesResults);
         console.log('Retrieved users likes!');
         console.log($scope.userLikesResults)
